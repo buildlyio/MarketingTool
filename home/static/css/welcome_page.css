@@ -104,6 +104,7 @@ a {
 }
 a:hover {
   color: var(--calido);
+  text-decoration: none;
 }
 p {
   font-weight: 400;
@@ -182,8 +183,7 @@ img {
   }
 }
 .logo {
-  width: 60px;
-  padding-bottom: 4px;
+  width: 70px;
 }
 .logo__nombre {
   font-weight: 400;
@@ -205,7 +205,16 @@ img {
   text-align:center;
   font-size: 18px;
   color: #848280;
+  text-decoration: none;
 }
+
+.navegation__link a:hover {
+  text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+  }
 
 .button2 {
   background-color: var(--brand-color);

@@ -4,14 +4,14 @@
 <!--  -->
 <br/>
 <div class="container" id="slides">
-  <div id="homeCarousel" class="carousel-light slide" data-bs-ride="carousel">
+  <div id="homeCarousel" class="carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
+      <div class="carousel-item active" data-bs-interval="5000">
         <img src="{% static 'img/pcHeader.png' %}" class="img-bottom" style="margin-left: 480px; margin-top: 100px;" >
         <div class="carousel-caption d-none d-md-block">
           <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Build with Insights</h2>
@@ -24,16 +24,15 @@
           </nav>
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="10000">
-        <a style="text-align: justify; margin-left: -320px; margin-top: 140px" href="https://insights.buildly.io/register" class="button button--secondary">Register Now</a>
-        <img src="{% static 'img/buildly-logo.png' %}" class="img-bottom" style="float:left; margin: 140px;  width:200px; margin-top: 230px">
+      <div class="carousel-item" data-bs-interval="60000">
+        <div style="position: relative; padding-top: 56.25%; background-image: linear-gradient(to bottom, #F4F4F4, #F4F4F4);">
+          <iframe src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/9f750b8f66e765ba499e8e7d7ce26cb2/iframe?preload=true&autoplay=true&poster=https%3A%2F%2Fcustomer-oea4zxza4u5hx1zy.cloudflarestream.com%2F9f750b8f66e765ba499e8e7d7ce26cb2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0h0m12s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+        </div>
         <div class="carousel-caption d-none d-md-block">
-          <h2 style="text-align: justify; margin-left: 300px; margin-top: 60px">Product Requirements Wizard</h2>
-          <p style="text-align: justify; margin-left: 300px; margin-top: 60px">Buildly Insights guides the requirement phase for the user by using <b>common language templates</b>.  Making it easier and faster to get started with confidence on a new project, or a complex migration.</p>
-          <br/>
+          <h2 style="text-align: justify; margin-left: -140px; margin-top: 10px">How does it work?</h2>
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="10000">
+      <div class="carousel-item" data-bs-interval="5000">
         <img src="{% static 'img/AI.png' %}" class="img-bottom" style="width:400px; float: right; margin: 75px;">
         <div class="carousel-caption d-none d-md-block" style="width: 500px;">
           <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Idea Translation AI</h2>
@@ -55,12 +54,26 @@
         </div>
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </div>
-  <br/>
-  <br/>
-  <br/>
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <div class="container">
       <div class="Do_it text-center">
@@ -113,7 +126,7 @@
 			<p>The Buildly Community is a combination of software developers, product and UI teams as well as marketing and business process organizations working to create a more inclusive open source community for us all to work with.</p>
 			<p>The Community helps each other grow and learn as well as promote each others business, priortize changes to the <a href="https://www.github.com/buildlyio">Buildly Open Source modules</a>.</p>
 			<div class="entrada__contenido">
-				<a href="https://discord.com/buildly-foundry" class="button button--primary">Join our community</a>
+				<a href="/community" class="button button--primary">Join our community</a>
 			</div>
 		</div>
 
@@ -158,10 +171,11 @@
         </div>
       </div><br/>
       <br/>
-			<p>Insights also provides release management tools so remote and in-house teams can communicate better with developers,
-        you as product manager can use your own Project Mangement tool and still get notifications and updates about progress and request from developers
+			<p>A Release Management process is an important part of software development that is often times overlooked.
+        If your working with <b>remote or in-house teams</b> communication about when to test, review or document a release can be difficult.
+        With Insights, as a product manager can use your own Project Mangement tool to plan features for a release and still get notifications and updates about progress and request from developers
         without having to login in or maintain an account in there issue tracking tool.</p>
-        <p>Developers can automate communication of milestone completion and releases that are ready for testing or product feedback as well all from one place.
+        <p>Developers can <b>automate communication of milestone completion and releases that are ready for testing or feedback</b> as well all from one place.
           All while speeing up releases even more by using our open source and modular build and deployment tools.</p>
 			<div class="entrada__contenido">
 				<a href="/news/" class="button button--primary">Get Started with Buildly Insights</a>
@@ -191,10 +205,22 @@
         </div>
       </div><br/>
       <br/>
-			<p>Many product and technical teams struggle at the start of a new project to establish clear requirements and even clearer lines of communication.  Initially they need help deciding on many aspects or the project beyond just documenting a solution and agreeing on a timeline,
-        they also need to choose and manage remote and local teams, plan functionality and agree on release dates.</p>
-			<p>Buildly is a combined product and technical team platform focused on how to make some of the most important parts of building a product easier. The time consuming and frustrating discovery phase and budgeting, as well as establishing solid and consistent communication protocols and release planning regardless of the tools you use.  We
-        use a combination of wizard like data collection algorithms for product description and categorization, combined with a set of AI and ML data models and example data sets to translate non-technical requirements into technical issues or tickets gathered into planned releases to provide solid estimates that learn and adapt from feedback to speed up processes and improve overall team performance in any workplace, but especially for software and cloud based products.</p>
+			<p>
+        Many product and technical teams struggle at the start of a new project to establish clear requirements and lines of communication.
+        Initially they need help deciding on many aspects or the project beyond just documenting a solution and agreeing on a timeline,
+        they also need to choose and <b>manage remote and local teams, plan functionality and agree on release dates</b>.
+      </p>
+			<p>
+        The time consuming and frustrating discovery phase and budgeting, as well as establishing solid and consistent communication protocols
+        and release planning regardless of the tools you use.
+      </p>
+      <h1>Budgets and Estimates</h1>
+      <p>
+        Insights uses a combination of <b>wizard like data collection algorithms</b> for product description and categorization, combined with a set of <b>AI and ML
+        data models and example data sets to translate non-technical requirements</b> into technical issues or tickets gathered into planned
+        releases to provide solid estimates that learn and adapt from feedback to speed up processes and improve overall
+        team performance in any workplace, but especially for software and cloud based products.
+      </p>
 			<div class="entrada__contenido">
 				<a href="https://insights.buildly.io/register" class="button button--primary">Get Started</a>
 			</div>
