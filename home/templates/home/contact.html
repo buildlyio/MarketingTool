@@ -9,32 +9,43 @@
 
 {% block content %}
 
-<main class="contenedor">
-    <h3 class="centrar-texto">Contact</h3>
+<div class="container">
+    <div class="Do_it text-center">
+			<div class="card-body">
+        <h2>Contact Us</h2>
+        <div class="line" style="float: center; width: 62px; margin-left: 500px;"></div>
+        <p class="card-text">
+					If you want to learn more about Buildly, drop us a line here and we will get back to ASAP!
+				</p>
+      </div>
+		</div>
+		<main class="conteiner-home">
+			<div class="container-commun">
 
-    <div class="contacto-bg"></div>
-    {% load crispy_forms_tags %}
-    <form method="post">
-        {%csrf_token%}
-        {%if form%}
+      <div class="contacto-bg"></div>
+      {% load crispy_forms_tags %}
+      <form method="post">
+          {%csrf_token%}
+          {%if form%}
 
-        <div class="row bg-white">
-            {%for field in form%}
-            <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
-            {%endfor%}
+          <div class="row bg-white">
+              {%for field in form%}
+              <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
+              {%endfor%}
 
-        <div class="col-md-12">
-        <ul class="list-inline text-right">
-            <li class="list-inline-item">
-                <button type="reset" class="btn btn-secondary">Reset</button>
-                <button type="submit" class="btn btn-Success">Save</button>
-            </li>
-        </ul>
-            </div>
-             </div>
-        {%endif%}
+          <div class="col-md-12">
+          <ul class="list-inline text-right">
+              <li class="list-inline-item">
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button type="submit" class="btn btn-Success">Save</button>
+              </li>
+          </ul>
+              </div>
+               </div>
+          {%endif%}
 
-    </form>
+      </form>
+      </div>
 
 </main>
 
