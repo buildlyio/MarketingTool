@@ -8,7 +8,11 @@
 {% endblock extra_css %}
 
 {% block content %}
-
+<script>
+  function onSubmit(token) {
+    document.getElementById("contact").submit();
+  }
+</script>
 <div class="container">
     <div class="Do_it text-center">
 			<div class="card-body">
@@ -24,7 +28,7 @@
 
       <div class="contacto-bg"></div>
       {% load crispy_forms_tags %}
-      <form method="post">
+      <form method="post" id="contact">
           {%csrf_token%}
           {%if form%}
 
@@ -37,7 +41,7 @@
           <ul class="list-inline text-right">
               <li class="list-inline-item">
                   <button type="reset" class="btn btn-secondary">Reset</button>
-                  <button type="submit" class="btn btn-Success">Save</button>
+                  <button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button>
               </li>
           </ul>
               </div>
