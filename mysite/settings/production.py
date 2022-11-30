@@ -29,4 +29,4 @@ EMAIL_PORT = 587  # new
 EMAIL_USE_TLS = True  # new
 
 # TODO: static files are not served if this is False
-DEBUG = False
+DEBUG = True
