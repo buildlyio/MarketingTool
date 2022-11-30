@@ -28,4 +28,5 @@ EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_PASSWORD")  # new
 EMAIL_PORT = 587  # new
 EMAIL_USE_TLS = True  # new
 
-DEBUG = False
+# TODO: static files are not served if this is False
+DEBUG = True
