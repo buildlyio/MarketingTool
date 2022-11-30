@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 1300:80
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - web
+    restart: "on-failure"
+  web:
+    build: . #build the image for the web service from the dockerfile in parent directory
+    command: sh -c "python manage.py makemigrations &&
+                    python manage.py migrate &&
+                    python manage.py initiate_admin &&
+                    python manage.py collectstatic &&
+                    gunicorn sampleApp.wsgi:application --bind 0.0.0.0:${APP_PORT}"
+    volumes:
+      - .:/microservice:rw # map data and files from parent directory in host to microservice directory in docker containe
+      - static_volume:/home/app/microservice/static
+    env_file:
+      - .env
+    image: sampleapp
+
+    expose:
+      - ${APP_PORT}
+    restart: "on-failure"
+    depends_on:
+      - nginx
+  nginx:
+      image: nginx:latest
+      container_name: nz01
+      ports:
+         - "8000:8000"
+      volumes:
+         - ./src:/app  # for syncing with django source code
+         - ./nginx:/etc/nginx/conf.d
+      depends_on:
+        - nyl2pronos-api
+volumes:
+  static_volume:
