@@ -10,17 +10,19 @@
 
 {% block content %}
 
-<main class="contenedor">
-	<h3 class="centrar-texto">About Us</h3>
-
-	<div class="sobre-nosotros">
-		<div class="sobre-nosotros__imagen">
-			<img class="guy" src="{% static 'img/guy.png' %}" alt="image of a person working at a desk">
-		</div>
-
-		<div class="sobre-nosotros__texto">
-			<h1>Our Story</h1>
-			<p>
+	<main class="conteiner-home">
+		<div class="container-commun">
+	
+         <div class="container-commun__text">
+		  <h4 class="card-title">About Us</h4><br/>
+		  <div class="container">
+			<div class="line">
+				<p></p>
+			</div>
+		  </div><br/>
+		  <h1>Our Story</h1>
+		  <br/>
+		  <p>
 			The founding of Buildly was based on several startups that most of the original founding team worked on as well as the
 			open source projects we built or contributed to for over the last 10 years.
 			We are all passionate open source supporters and life long
@@ -31,27 +33,28 @@
 			Not everyone understands what a microservice is, or what Kubernetes means or even how to pronounce it, but our team eats, sleeps and dreams this stuff.
 			We can help you get set up with tools to start building and migrating to the cloud faster than you ever thought possible.
 			</p>
-			<div class="entrada__contenido">
-				<h4 class="no-margin"></h4>
-				<a href="/contact/" class="boton boton--secundario">Contact us</a>
+				<div class="entrada__contenido">
+					<a href="/contact/" class="button button--primary">Contact us</a>
+				</div>
 			</div>
+
+		<div>
+			<img src="{% static 'img/menjob.png' %}" height="500" alt="img about" />
 		</div>
-	</div>
+		</div>
 
 
-	<h3>Team</h3>
-
-	<div class="card-group">
+	  <div class="card-group">
 		<div class="card text-center border-light mb-3">
 			<div class="image-cropper">
-				<img src="{% static 'img/greg.jpg' %}" alt="img Team">
 			</div>
 			<div class="entrada__contenido">
-				<h4 class="no-margin">Greg Lind</h4>
-				<em>CHIEF EXECUTIVE OFFICER</em>
+				<h4 class="card-title">Team</h4>
+				<em><div class="line" style="float: center; width: 62px; margin-left: 280px;">
+					<p></p>
+				</div></em>
 				<p>
-					Greg has been working in software development since 1997 starting at a small web development shop in Portland, Oregon.
-					He has a deep interest in open source software and improving the craftsmanship of software as well as access to it.
+					Proactivity - Solidarity - Teamwork - Autonomy - Flexibility - Attention - Motivation - Clarity
 				</p>
 			</div>
 		</div>
@@ -72,11 +75,30 @@
 				</p>
 			</div>
 		</div>
+
+
 		<div class="card-group">
+			<div class="card text-center border-light mb-3">
+				<div class="image-cropper">
+					<img src="{% static 'img/greg.jpg' %}" alt="img Team">
+				</div>
+				<div class="entrada__contenido">
+					<h4 class="no-margin">Greg Lind</h4>
+					<em>CHIEF EXECUTIVE OFFICER</em>
+					<p>
+						Greg has been working in software development since 1997 starting at a small web development shop in Portland, Oregon.
+						He has a deep interest in open source software and improving the craftsmanship of software as well as access to it.
+					</p>
+				</div>
+			</div>
+			<div>
+				&nbsp;
+			</div>
 			<div class="card text-center border-light mb-3">
 				<div class="image-cropper">
 					<img src="{% static 'img/jeffrey.png' %}" alt="img Team">
 				</div>
+	
 				<div class="entrada__contenido">
 					<h4 class="no-margin">Jeffrey Akita</h4>
 					<em>Vice President of Marketing and Sales</em>
@@ -88,8 +110,13 @@
 					</p>
 				</div>
 			</div>
-		</div>
+
+			</div>
+
+
+
 	</main>
+
 
 
 {% endblock content %}

@@ -10,13 +10,18 @@
 
 {% block content %}
 
-<main class="contenedor">
-	<h3 class="centrar-texto">Foundry</h3>
+<main class="conteiner-home">
+	<div class="container-commun">
 
-	<div class="sobre-nosotros">
-		<div class="sobre-nosotros__texto">
-			<p>
-			The <b>Buildly Foundry</b> is a community driven effort availabe to select startups using the Insights tool.  It is a collection of open source tools, services, discounts, credits and process frameworks that helps startup and enterprise teams launch build and migrate applications to cloud native architectures and maintain them long term.
+		<div class="container-commun__text">
+      <h4 class="card-title">Foundry</h4><br/>
+      <div class="container">
+        <div class="line">
+            <p></p>
+        </div>
+      </div><br/>
+      <br/>
+			<p>			The <b>Buildly Foundry</b> is a community driven effort availabe to select startups using the Insights tool.  It is a collection of open source tools, services, discounts, credits and process frameworks that helps startup and enterprise teams launch build and migrate applications to cloud native architectures and maintain them long term.
 			</p>
 			<div class="card">
 				<b>The Buildly Foundry and <a href="https://www.open.build">Open Build's</a> partnership in it helps drive technical development by providing:</b>
@@ -31,28 +36,33 @@
 				</ul>
 			</div>
 			<p>
-			Graduates of the Buildly Foundry receive discounted rates on Buildly’s hosted product and release tools.
-
-			Join the Buildly Foundry and spend your time focused on the vision of your application, and stop worrying about the technical problems.
-			</p>
-			<a href="https://www.f6s.com/buildly-foundry-accelerator-2022/apply" class="boton boton--primario">Foundry Application</a>
-
+				Graduates of the Buildly Foundry receive discounted rates on Buildly’s hosted product and release tools.
+	
+				Join the Buildly Foundry and spend your time focused on the vision of your application, and stop worrying about the technical problems.
+				</p>
+			<div class="entrada__contenido">
+				<a href="https://www.f6s.com/buildly-foundry-accelerator-2022/apply" class="button button--primary">Foundry Application</a>
+			</div>
 		</div>
 
-		<div class="image_right">
-    	<img src="{% static 'img/community.png' %}" alt="">
-			<div class="card">
-				<div class="card-header">
+    <div>
+	  <img src="{% static 'img/menjob.png' %}" height="500" alt="img Foundry" />
+    </div>
+	</div>
+
+	<div class="card">
+			<div class="card-header">
 					<h4>Foundry Partners</h4>
-				</div>
-				<div class="card-content">
+					<div class="line">
+						<p></p>
+					</div>
+			</div>
+			<div class="card-content" style="margin-left: 430px;">
 					<br/>
 					<a href="https://www.ajackus.com" target="_new"><img src="{% static 'img/ajackus.png' %}" width="75" height="75"></a>&nbsp;
 					<a href="https://www.ageofpeers.com" target="_new"><img src="{% static 'img/ageofpeers.png' %}" width="75" height="75"></a>&nbsp;
 					<a href="https://kurentco.com/" target="_new"><img src="{% static 'img/kurent.jpg' %}" width="75" height="75"></a>&nbsp;
-				</div>
 			</div>
-		</div>
 	</div>
 
 </main>

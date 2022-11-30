@@ -566,6 +566,8 @@ width: 150px;
   padding: 15px;
 }
 
+/*foundry*/
+
 .btn-primary {
   background-color: var(--primario);
 }
@@ -612,6 +614,7 @@ width: 150px;
 #github {
   background-color: white;
 }
+
 
 /*footer*/
 .row {
