@@ -9,34 +9,25 @@
 
 {% block content %}
 
-<main class="contenedor">
-    <h3 class="centrar-texto">Contact</h3>
+<main class="conteiner-home">
+	<div class="container-commun">
 
-    <div class="contacto-bg"></div>
-    {% load crispy_forms_tags %}
-    <form method="post">
-        {%csrf_token%}
-        {%if form%}
+	 <div class="container-commun__text">
+        <img src="{% static 'img/contact.png' %}" style="float: center; margin-left: 100px; margin-top: 60px" height="600" alt="img about" />
+	</div>
 
-        <div class="row bg-white">
-            {%for field in form%}
-            <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
-            {%endfor%}
+    <div>
+        <form class="formulario" action="/registration" action="../../form-result.php"  method="post" enctype="multipart/form-data" target="_blank">
 
-        <div class="col-md-12">
-        <ul class="list-inline text-right">
-            <li class="list-inline-item">
-                <button type="reset" class="btn btn-secondary">Reset</button>
-                <button type="submit" class="btn btn-Success">Save</button>
-            </li>
-        </ul>
-            </div>
-             </div>
-        {%endif%}
 
-    </form>
-
+            <section class="form-register">
+                <h4>Contact Us</h4>
+                <input class="controls" type="text" name="nombres" id="nombres" placeholder="Your Full-name">
+                <input class="controls" type="email" name="correo" id="correo" placeholder="Your E-mail">
+                <input class="controls" type="url" name="url" id="url" placeholder="Your Linkedin">
+                <input class="controls" type="text" name="url" id="url" placeholder="Describe yourself">
+                <input class="botons" type="submit" value="submit">
+              </section>
+	</div>
 </main>
-
-
 {% endblock content %}
