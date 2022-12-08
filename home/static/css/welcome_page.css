@@ -741,7 +741,7 @@ input.input{
 
 /* form-contact */
 .form-register {
-  width: 400px;
+  width: 380px;
   background: var(--brand-color);
   padding: 30px;
   margin: auto;
@@ -752,9 +752,24 @@ input.input{
   box-shadow: 7px 13px 37px rgb(228, 227, 227);
 }
 
+.disrow{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 10px));
+  gap: 15px;
+}
+
 .form-register h4 {
   font-size: 22px;
   margin-bottom: 20px;
+}
+
+.text-list{
+  width: 100%;
+  font-family: 'calibri';
+  font-size: 18px;
+  padding:0px 0px 50px 0px ;
+  border-radius: 4px;
+  margin-bottom: 16px;
 }
 
 .controls {
@@ -786,7 +801,7 @@ input.input{
   text-decoration: underline;
 }
 
-.form-register .botons {
+.form-register .buttons {
   width: 100%;
   background: var(--mid-color);
   border-radius: 40px;
@@ -795,6 +810,11 @@ input.input{
   color: white;
   margin: 16px 0;
   font-size: 16px;
+  position: relative;
+  text-align: center;
+  padding: 16px 24px;
+  line-height: 8px;
+  height: 40px;
 }
 
 .custom-input-file {
@@ -810,6 +830,7 @@ input.input{
   overflow: hidden;
   position: relative;
   text-align: center;
+  line-height: 30px;
   height: 40px;
 }
 .custom-input-file .input-file {
