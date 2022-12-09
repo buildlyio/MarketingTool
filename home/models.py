@@ -26,6 +26,9 @@ class Contact(Page):
 class Community(Page):
     pass
 
+class BlankPage(Page):
+    pass
+
 class FAQ(Page):
     pass
 
