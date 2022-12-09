@@ -8,6 +8,18 @@
 {% endblock extra_css %}
 
 {% block content %}
+<div class="container">
+    <div class="Do_it text-center">
+			<div class="card-body">
+        <h2>Contact Us</h2>
+        <div class="line" style="float: center; width: 62px; margin-left: 500px;"></div>
+        <p class="card-text">
+					If you want to learn more about Buildly, drop us a line here and we will get back to ASAP!
+				</p>
+      </div>
+		</div>
+		<main class="conteiner-home">
+			<div class="Do_it text-center">
 
 <main class="conteiner-home">
 	<div class="container-commun">
@@ -49,8 +61,12 @@
                        <option value="Design or UI"></option>
                        <option value="Other"></option>
                        </datalist>
-                    <input class="controls" type="email" name="url" id="url" placeholder="Company URL">
-                    <input class="controls" type="text" name="url" id="url" placeholder="Additional Information">
+                       {%for field in form%}
+                       <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
+                       {%endfor%}
+
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button class="g-recaptcha" data-sitekey="6Le_IUQjAAAAAL96VdafV8HcvdiOLNtA0Fo5UWBl" data-callback='onSubmit' data-action='submit'>Submit</button>
                     <input class="buttons" type="submit" value="submit">
                 </div>
             </div>

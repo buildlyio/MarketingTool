@@ -8,7 +8,7 @@ class ContactMailForm(forms.ModelForm):
     class Meta:
         model = ContactMail
 
-        fields = ('name','email','url','message','file')
+        fields = ('name','email','url','message')
 
         widgets = {
             'message':forms.Textarea(attrs={'cols':10,'rows':3})

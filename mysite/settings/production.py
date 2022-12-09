@@ -13,8 +13,6 @@ DATABASES = {
     }
 }
 
-DEBUG = True
-
 ALLOWED_HOSTS = ['coral-app-sbh2h.ondigitalocean.app', 'buildly.io', '127.0.0.1', '[::1]','www.buildly.io',]
 
 try:
@@ -29,3 +27,6 @@ EMAIL_HOST_USER = "apikey"  # new
 EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_PASSWORD")  # new
 EMAIL_PORT = 587  # new
 EMAIL_USE_TLS = True  # new
+
+# TODO: static files are not served if this is False
+DEBUG = True
