@@ -33,17 +33,15 @@
         <div>
           <form class="formulario" action="/contact/" method="post" enctype="multipart/form-data" target="_blank">
 
-
+            {% csrf_token %}
             <section class="form-register">
                 <h4>Contact Us</h4>
                 <div class="disrow">
                   <div>
-                      <p class="text-list">Type of Inquiry:</p>
-                  </div>
-                  <div>
                       <input class="controls" type="text" list="items" />
                          <!-- List of options -->
                          <datalist id="items">
+                         <option value="" selected="selected">Type of Inquiry</option>
                          <option value="Partnership"></option>
                          <option value="Employment,"></option>
                          <option value="Community"></option>
