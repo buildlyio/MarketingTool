@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+
+<main class="conteiner-home">
+	<div class="container-commun">
+		<div class="container-commun__text">
+			<h4 class="card-title">Products</h4><br/>
+			<div>
+				<div style="position: relative; padding-top: 56.25%; background-image: linear-gradient(to bottom, #F4F4F4, #F4F4F4);">
+					<iframe src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/9f750b8f66e765ba499e8e7d7ce26cb2/iframe?preload=true&autoplay=true&poster=https%3A%2F%2Fcustomer-oea4zxza4u5hx1zy.cloudflarestream.com%2F9f750b8f66e765ba499e8e7d7ce26cb2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0h0m12s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+				</div>
+			</div>
+		</div>
+		<main class="conteiner-home">
+			<div class="container-commun">
+				<div class="container-commun__text">
+					<h4 class="card-title">Buildly Insights</h4><br/>
+					<div class="container">
+					<div class="line">
+					<p></p>
+					</div>
+					</div>
+					<br/>
+					<h1>Product Management for everyone, including developers!</h1>
+					<p>
+					Buildly Insights is a product management platform, designed to help product and development teams work better and faster together.  It is focused on building an inclusive team around every aspect of software development, but with a special focus on the processes that manage it and the communication and strategy needed to be successful at it.
+					</p>
+					<p>
+					We use Machine Learning and proprietary AI models, trained on previous and public data sets to automate the requirements gathering process, create estimates and specs and that can be shared with prospective internal or external development teams. Once that process is completed, we transition teams to our release management API, where teams can now integrate with their own third party product and issue management tools and we help them communicate together as if it was one tool and they were just one team.
+				</p>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div class="container-commun">
+		<div class="container-commun__text">
+			<h4 class="card-title">Developer Tools</h4><br/>
+		</div>
+		<main class="conteiner-home">
+			<div class="container-commun">
+				<div class="container-commun__text">
+					<h4 class="card-title">Buildly Open Source Core</h4><br/>
+					<div class="container">
+					<div class="line">
+					<p></p>
+					</div>
+					</div>
+					<br/>
+					<h1>Software Architecture as a Service</h1>
+					<p>
+					We are fostering and growing a community of open source software developers, technical teams and product owners to work on refining the work of building products together, listening and respecting each others opinions and speeding up the process so we can all focus on innovation and growth, together as a community
+					</p>
+					<p>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+</main>
+
+
+{% endblock content %}

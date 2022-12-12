@@ -32,6 +32,9 @@ class BlankPage(Page):
 class FAQ(Page):
     pass
 
+class Products(Page):
+    pass
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
     inquiry = models.CharField(max_length=255, blank=True)
