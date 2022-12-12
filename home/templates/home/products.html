@@ -45,6 +45,33 @@
 	<div class="container-commun">
 		<div class="container-commun__text">
 			<h4 class="card-title">Developer Tools</h4><br/>
+				<div style="position: relative; padding-top: 56.25%; background-image: linear-gradient(to bottom, #F4F4F4, #F4F4F4);">
+					<!-- You can use styles and CSS on this iframe element where the video player will appear -->
+					<iframe
+					  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+					  style="border: none"
+					  height="720"
+					  width="1280"
+					  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+					  allowfullscreen="true"
+					  id="stream-player"
+					></iframe>
+
+					<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+
+					<!-- Your JavaScript code below-->
+					<script>
+					  const player = Stream(document.getElementById('stream-player'));
+					  player.addEventListener('play', () => {
+					    console.log('playing!');
+					  });
+					  player.play().catch(() => {
+					    console.log('playback failed, muting to try again');
+					    player.muted = true;
+					    player.play();
+					  });
+					</script>
+				</div>
 		</div>
 		<main class="conteiner-home">
 			<div class="container-commun">
