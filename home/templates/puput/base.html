@@ -39,15 +39,12 @@
         <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
 
     {% endblock %}
-    {% block extra_css %}
-
-    {% endblock extra_css %}
 </head>
 <body>
-{% include "includes/banner.html" %}
-{% include "includes/header.html" %}
+  {% include "includes/banner.html" %}
+  {% include "includes/header.html" %}
 {% block blog_header %}
-    <div class="container">
+    <div class="about">
         {% if blog_page.header_image %}
             <span class="image featured">
                 {% image blog_page.header_image fill-1500x120 as header_image %}
@@ -124,10 +121,16 @@
         </div>
     </div>
 </div>
-{% include "includes/footer.html" %}
+<div class="footer">
+
+    <div class="footer_bottom">
+
+    </div>
+</div>
 {% block js %}
     <script src="{% static 'puput/js/jquery.min.js' %}"></script>
     <script src="{% static 'puput/js/puput.js' %}"></script>
 {% endblock js %}
+
 </body>
 </html>

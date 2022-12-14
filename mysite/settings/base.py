@@ -92,7 +92,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
 
+    'django.template.context_processors.request',
+)
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -177,6 +180,6 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://buildly.io'
 
-PUPUT_AS_PLUGIN = False
+PUPUT_AS_PLUGIN = True
 
 SECRET_KEY = "sdfgerg32g90uadfgjo12!@89u9ergj924fsdf9889"
