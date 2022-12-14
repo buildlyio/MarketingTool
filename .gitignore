@@ -132,3 +132,6 @@ db.sqlite3
 
 # mac
 .DS_Store
+
+# Ignore media file so we don't overwrite server
+media/
