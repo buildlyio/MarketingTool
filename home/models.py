@@ -35,6 +35,12 @@ class FAQ(Page):
 class Products(Page):
     pass
 
+class Privacy(Page):
+    pass
+
+class Eula(Page):
+    pass
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
     inquiry = models.CharField(max_length=255, blank=True)
