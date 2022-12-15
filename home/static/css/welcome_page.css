@@ -97,7 +97,7 @@ body {
 .conteiner-home {
   width: min(90%, 120rem);
   margin: 0 auto;
-  padding: 50px 0px 200px 0px;
+  padding: 50px 0px 50px 0px;
 }
 a {
   text-decoration: none;
@@ -361,7 +361,11 @@ img {
 
 /* costumers */
 
-/* Any Question: edit this session whith background-image: linear-gradient(to bottom, #F4F4F4, #F4F4F4);*/
+/* position:absolute;*/
+
+.conteiner-any {
+  padding: 0px 0px 300px 0px;
+}
 
 .any{
   position:absolute;
@@ -412,13 +416,17 @@ img {
 
 /* GET STARTED NOW */
 
+.ontainer-now {
+  padding: 0px 0px 300px 0px;
+}
+
 .now {
-  position:absolute;
-  padding: 80px 0px 50px 0px;
+  position:relative;
+  padding: 80px 30px 100px 0px;
   width: 950px;
   height: 359px;
-  left: 130px;
-  top: 4299px;
+  left: 150px;
+  top: 0px;
   background: #F07000;;
   border-radius: 50px;
   border: none;
@@ -628,7 +636,7 @@ width: 150px;
   text-align: left;
 }
 footer {
-  padding: 300px 80px 0px 80px;
+  padding: 0px 80px 0px 80px;
   width:100%;
   background-color:#FFFFFF;
   min-height:250px;
