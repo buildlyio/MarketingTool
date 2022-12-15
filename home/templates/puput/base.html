@@ -35,16 +35,14 @@
                 --main-color: {{blog_page.main_color}};
             }
         </style>
-        <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-    {% endblock %}
-    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
 
-    {% endblock extra_css %}
+    {% endblock %}
 </head>
 <body>
-{% include "includes/banner.html" %}  
-{% include "includes/header.html" %}
+  {% include "includes/banner.html" %}
+  {% include "includes/header.html" %}
 {% block blog_header %}
     <div class="about">
         {% if blog_page.header_image %}
@@ -123,10 +121,16 @@
         </div>
     </div>
 </div>
-{% include "includes/footer.html" %}
+<div class="footer">
+
+    <div class="footer_bottom">
+
+    </div>
+</div>
 {% block js %}
     <script src="{% static 'puput/js/jquery.min.js' %}"></script>
     <script src="{% static 'puput/js/puput.js' %}"></script>
 {% endblock js %}
+
 </body>
 </html>

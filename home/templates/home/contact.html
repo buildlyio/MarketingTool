@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load wagtailcore_tags %}
+{% load crispy_forms_field %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
@@ -8,55 +13,56 @@
 {% endblock extra_css %}
 
 {% block content %}
+<div class="container">
+    <div class="Do_it text-center">
+			<div class="card-body">
+        <h2>Contact Us</h2>
+        <div class="line" style="float: center; width: 62px; margin-left: 500px;"></div>
+        <p class="card-text">
+					If you want to learn more about Buildly, drop us a line here and we will get back to ASAP!
+				</p>
+      </div>
+		</div>
 
-<main class="conteiner-home">
-	<div class="container-commun">
+    <main class="conteiner-home">
+    	<div class="container-commun">
+        <div class="container-commun__text">
+            <img src="{% static 'img/contactB.png' %}" style="float: center; margin-left: 60px; margin-top: 60px" height="600" alt="img about" />
+        </div>
 
-	 <div class="container-commun__text">
-        <img src="{% static 'img/contactB.png' %}" style="float: center; margin-left: 60px; margin-top: 60px" height="600" alt="img about" />
-	</div>
+        <div>
+          <form class="formulario" action="/contact/" method="post" enctype="multipart/form-data" target="_blank">
 
-    <div>
-        <form class="formulario" action="/registration" action="../../form-result.php"  method="post" enctype="multipart/form-data" target="_blank">
-
-
+            {% csrf_token %}
             <section class="form-register">
                 <h4>Contact Us</h4>
                 <div class="disrow">
-                <div>
-                    <p class="text-list">Type of Inquiry:</p>
-                    <p class="text-list">Partnership:</p>
-                    <input class="controls" type="email" name="correo" id="correo" placeholder="Your Name">
-                    <input class="controls" type="email" name="correo" id="correo" placeholder="Your E-mail">
-                    <div class="custom-input-file">
-                        <input type="file" id="resume" class="input-file" value="Your Resume" > Your Resume</div>
-                </div>
-                <div>
-                    <input class="controls" type="text" list="items" />
-                       <!-- List of options -->
-                       <datalist id="items">
-                       <option value="Partnership"></option>
-                       <option value="Employment,"></option>
-                       <option value="Community"></option>
-                       <option value="Other"></option>
-                       </datalist>
-                    <input class="controls" type="text" list="items" />
-                       <!-- List of options -->
-                       <datalist id="items">
-                       <option value="Development Agency"></option>
-                       <option value="Product Team2"></option>
-                       <option value="Marketing or Ad Agency"></option>
-                       <option value="Design or UI"></option>
-                       <option value="Other"></option>
-                       </datalist>
-                    <input class="controls" type="email" name="url" id="url" placeholder="Company URL">
-                    <input class="controls" type="text" name="url" id="url" placeholder="Additional Information">
-                    <input class="buttons" type="submit" value="submit">
-                </div>
-            </div>
-              </section>
-	</div>
-</main>
+                  <div>
+                      <input class="controls" type="text" list="items" />
+                         <!-- List of options -->
+                         <datalist id="items">
+                         <option value="" selected="selected">Type of Inquiry</option>
+                         <option value="Partnership"></option>
+                         <option value="Employment,"></option>
+                         <option value="Community"></option>
+                         <option value="Other"></option>
+                         </datalist>
+
+                         {%for field in form%}
+                         <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
+                         {%endfor%}
+
+
+                      <input type="submit" class="buttons" data-sitekey="6Le_IUQjAAAAAL96VdafV8HcvdiOLNtA0Fo5UWBl" data-callback='onSubmit' data-action='submit'>
+
+                  </div>
+              </div>
+            </section>
+            </form>
+        </div>
+      </div>
+    </main>
+  </div>
 
 
 {% endblock content %}

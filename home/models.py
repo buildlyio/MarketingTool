@@ -26,8 +26,24 @@ class Contact(Page):
 class Community(Page):
     pass
 
+class BlankPage(Page):
+    pass
+
+class FAQ(Page):
+    pass
+
+class Products(Page):
+    pass
+
+class Privacy(Page):
+    pass
+
+class Eula(Page):
+    pass
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
+    inquiry = models.CharField(max_length=255, blank=True)
     message = models.TextField(blank=True)
     email = models.CharField(max_length=255, blank=True)
     file = models.CharField(max_length=255, null=True, blank=True)
@@ -55,7 +71,6 @@ class ContactMail(models.Model):
             self.create_date = timezone.now()
         self.edit_date = timezone.now()
         super(ContactMail, self).save(*args, **kwargs)
-
 
 
 class ContactMailAdmin(admin.ModelAdmin):

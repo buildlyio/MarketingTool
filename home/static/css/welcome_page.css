@@ -105,6 +105,7 @@ a {
 }
 a:hover {
   color: var(--calido);
+  text-decoration: none;
 }
 p {
   font-weight: 400;
@@ -183,8 +184,7 @@ img {
   }
 }
 .logo {
-  width: 60px;
-  padding-bottom: 4px;
+  width: 70px;
 }
 .logo__nombre {
   font-weight: 400;
@@ -204,9 +204,18 @@ img {
   flex-direction: row;
   align-items:center;
   text-align:center;
-  font-size: 16px;
+  font-size: 18px;
   color: #848280;
+  text-decoration: none;
 }
+
+.navegation__link a:hover {
+  text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+  }
 
 .button2 {
   background-color: var(--brand-color);
@@ -361,8 +370,6 @@ img {
 }
 
 /* costumers */
-
-/* position:absolute;*/
 
 .conteiner-any {
   padding: 0px 0px 300px 0px;
@@ -860,4 +867,3 @@ input.input{
       margin-top: 15rem;
   }
 }
-

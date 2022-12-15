@@ -1,3 +1,8 @@
+/* override buildly css */
+.row {
+  border-radius: 0px;
+}
+
 /* valores */
 .transform {
     transform: rotate(7deg);
@@ -371,7 +376,7 @@ p {
 
 .blog_grid p {
     color: #666666;
-    font-size: 1em;
+    font-size: 3em;
     line-height: 1.5em;
     margin-top: 1em;
 }
