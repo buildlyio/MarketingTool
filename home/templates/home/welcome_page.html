@@ -114,31 +114,6 @@
 
 <main class="conteiner-home">
 	<div class="container-commun">
-
-		<div class="container-commun__text">
-      <h4 class="card-title">Buildly Community</h4><br/>
-      <div class="container">
-        <div class="line">
-            <p></p>
-        </div>
-      </div><br/>
-      <br/>
-			<p>The Buildly Community is a combination of software developers, product and UI teams as well as marketing and business process organizations working to create a more inclusive open source community for us all to work with.</p>
-			<p>The Community helps each other grow and learn as well as promote each others business, priortize changes to the <a href="https://www.github.com/buildlyio">Buildly Open Source modules</a>.</p>
-			<div class="entrada__contenido">
-				<a href="/community" class="button button--primary">Join our community</a>
-			</div>
-		</div>
-
-    <div style="position: relative; left: 0; top: 0;">
-      <img src="{% static 'img/Community.png' %}" class='img_front'/>
-      <img src="{% static 'img/OrangeRectangule.png' %}" class="orangeB"/>
-    </div>
-	</div>
-</main>
-
-<main class="conteiner-home">
-	<div class="container-commun">
     <div style="position: relative; left: 0; top: 0;">
       <img src="{% static 'img/Automated.png' %}" class='front_img'/>
       <img src="{% static 'img/OrangeRectangule.png' %}" class="orangeR"/>
@@ -152,7 +127,10 @@
         </div>
       </div><br/>
       <br/>
-			<p>Insights provides release management tools so remote and in-house teams can communicate better with developers who can speed up releases even more by using our open source and modular build and deployment tools.</p>
+			<p>
+        Insights provides communication and alert tools so remote and in-house teams can communicate more clearly and 
+        get timely alerts about <b>Release Timelines, Testing and when that important feature will be ready for customers. </b>
+      </p>
 			<div class="entrada__contenido">
 				<a href="https://insights.buildly.io" class="button button--primary">Get Started</a>
 			</div>
@@ -171,12 +149,14 @@
         </div>
       </div><br/>
       <br/>
-			<p>A Release Management process is an important part of software development that is often times overlooked.
+			<p>
         If your working with <b>remote or in-house teams</b> communication about when to test, review or document a release can be difficult.
         With Insights, as a product manager can use your own Project Mangement tool to plan features for a release and still get notifications and updates about progress and request from developers
-        without having to login in or maintain an account in there issue tracking tool.</p>
-        <p>Developers can <b>automate communication of milestone completion and releases that are ready for testing or feedback</b> as well all from one place.
-          All while speeing up releases even more by using our open source and modular build and deployment tools.</p>
+        without having to login in or maintain an account in there issue tracking tool.
+      </p>
+        <p>
+          Developers can <b>automate communication of milestone completion and releases that are ready for testing or feedback</b>from one place.
+        </p>
 			<div class="entrada__contenido">
 				<a href="/news/" class="button button--primary">Get Started with Buildly Insights</a>
 			</div>
@@ -206,20 +186,15 @@
       </div><br/>
       <br/>
 			<p>
-        Many product and technical teams struggle at the start of a new project to establish clear requirements and lines of communication.
-        Initially they need help deciding on many aspects or the project beyond just documenting a solution and agreeing on a timeline,
-        they also need to choose and <b>manage remote and local teams, plan functionality and agree on release dates</b>.
-      </p>
-			<p>
-        The time consuming and frustrating discovery phase and budgeting, as well as establishing solid and consistent communication protocols
-        and release planning regardless of the tools you use.
+        Starting a new product can be a time consuming and frustrating process.  The discovery phase includes things like budgeting, timelines and architecting a solution,
+        as well as establishing solid and consistent communication protocols.  The <b>Buildly Insights logic and AI components</b> 
+        handles all of that for you in minutes instead of weeks.
       </p>
       <h1>Budgets and Estimates</h1>
       <p>
-        Insights uses a combination of <b>wizard like data collection algorithms</b> for product description and categorization, combined with a set of <b>AI and ML
-        data models and example data sets to translate non-technical requirements</b> into technical issues or tickets gathered into planned
-        releases to provide solid estimates that learn and adapt from feedback to speed up processes and improve overall
-        team performance in any workplace, but especially for software and cloud based products.
+        Insights uses a combination of <b>wizard like data collection algorithms</b>, combined with a set of <b>AI and ML
+        data models and example data sets to translate your non-technical requirements</b> into technical issues or tickets.  Then it gathers all of that into planned
+        releases to provide solid estimates that <b>learn and adapt and improve overall team performance with each iteration and release.</b>
       </p>
 			<div class="entrada__contenido">
 				<a href="https://insights.buildly.io/register" class="button button--primary">Get Started</a>
@@ -228,12 +203,34 @@
 	</div>
 </div>
 </main>
-<br/>
-<br/>
+
+<main class="conteiner-home">
+	<div class="container-commun">
+		<div class="container-commun__text">
+      <h4 class="card-title">Buildly Community</h4><br/>
+      <div class="container">
+        <div class="line">
+            <p></p>
+        </div>
+      </div><br/>
+      <br/>
+			<p>The Buildly Community is a combination of software developers, product and UI teams as well as marketing and business process organizations working to create a more inclusive open source community for us all to work with.</p>
+			<p>The Community helps each other grow and learn as well as promote each others business, priortize changes to the <a href="https://www.github.com/buildlyio">Buildly Open Source modules</a>.</p>
+			<div class="entrada__contenido">
+				<a href="/community" class="button button--primary">Join our community</a>
+			</div>
+		</div>
+
+    <div style="position: relative; left: 0; top: 0;">
+      <img src="{% static 'img/Community.png' %}" class='img_front'/>
+      <img src="{% static 'img/OrangeRectangule.png' %}" class="orangeB"/>
+    </div>
+	</div>
+</main>
 <br/>
 <br/>
 
-<main class="conteiner-any">
+<main class="conteiner-home">
 	<div class="container-commun">
     <div style="position: relative; left: 0; top: 0;">
       <img src="{% static 'img/AnyQuestions.png' %}" class='any'/>
@@ -251,17 +248,18 @@
 	</div>
 </main>
 
-
-<div class="container-now">
-  <div class="now text-center">
-    <div class="c-body">
-      <p class="c-text">Are you ready to Start Building with Buildly?</p>
-      <h2>GET STARTED NOW</h2>
-      <br/>
-      <a href="/news/" class="button button--squere">Get Started</a>
+<main class="conteiner-home">
+  <div class="conteiner-commun">
+    <div class="now text-center">
+      <div class="c-body">
+        <p class="c-text">Are you ready to Start Building with Buildly?</p>
+        <h2>GET STARTED NOW</h2>
+        <br/>
+        <a href="/news/" class="button button--squere">Get Started</a>
+      </div>
     </div>
   </div>
-</div>
+</main>
 <br/>
 <br/>
 <br/>
