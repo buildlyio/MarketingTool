@@ -2,74 +2,70 @@
 {% load static %}
 
 <!--  -->
-<br/>
-<div class="container" id="slides">
-  <div id="homeCarousel" class="carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<main class="conteiner-home">
+  <div class="container" id="slides">
+    <div id="homeCarousel" class="carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="{% static 'img/pcHeader.png' %}" class="img-bottom" style="margin-left: 480px; margin-top: 100px;" >
+          <div class="carousel-caption d-none d-md-block">
+            <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Build with Insights</h2>
+            <p style="text-align: justify; margin-left: -140px; margin-top: 60px">Buildly Insights let’s you communicate with your remote<br/> development team to build products that matter and ensure the<br/> quality is there for your product’s growth.</p>
+            <img src="{% static 'img/insights-logo.png' %}" class="img-bottom" style="float: center; width: 267.3px; margin-left: 0px; margin-top: 30px">
+            <nav class="navegation">
+              <a style="text-align: justify; margin-left: -150px; margin-top: 60px" href="https://insights.buildly.io/register" class="button button--secondary">Register Now</a>
+
+              <a style="text-align: justify; margin-left: 20px; margin-top: 60px" href="https://insights.buildly.io/register" class="button1">Learn more</a>
+            </nav>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="60000">
+          <div style="position: relative; padding-top: 56.25%;">
+            <iframe src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/f2f795be2701fe767dfa9c05812210f9/iframe?preload=true&autoplay=true&poster=https%3A%2F%2Fcustomer-oea4zxza4u5hx1zy.cloudflarestream.com%2F9f750b8f66e765ba499e8e7d7ce26cb2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0h0m12s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <h2 style="text-align: justify; margin-left: -140px; margin-top: 10px">How does it work?</h2>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static 'img/AI.png' %}" class="img-bottom" style="width:400px; float: right; margin: 75px;">
+          <div class="carousel-caption d-none d-md-block" style="width: 500px;">
+            <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Idea Translation AI</h2>
+              <p style="text-align: justify; margin-left: -140px; margin-top: 70px">Buildly Insights AI <b>translates your product ideas into technical documentation</b>
+                to speed up the development budgeting phase.
+                <br/>
+                <br/>
+                Once the documentation is translated, import your features from Trello, and then
+                use one of our other API integrations to share your technical tickets via GitHub<br/>
+                <nav class="navegation">
+                  <p style="text-align: justify; margin-left: -150px; margin-top: 60px">(Available Now) or Jira (Coming Soon!)</p>
+
+                  <img src="{% static 'img/github.png' %}" class="img-bottom" style="width:70px; float: right;  margin-left: 20px; margin-top: 60px">
+
+                </nav>
+                <br/>
+                <a style="text-align: justify; margin-left: 200px; margin-top: 60px" href="https://insights.buildly.io/register" class="button button--secondary">Register Now</a>
+              </p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="5000">
-        <img src="{% static 'img/pcHeader.png' %}" class="img-bottom" style="margin-left: 480px; margin-top: 100px;" >
-        <div class="carousel-caption d-none d-md-block">
-          <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Build with Insights</h2>
-          <p style="text-align: justify; margin-left: -140px; margin-top: 60px">Buildly Insights let’s you communicate with your remote<br/> development team to build products that matter and ensure the<br/> quality is there for your product’s growth.</p>
-          <img src="{% static 'img/insights-logo.png' %}" class="img-bottom" style="float: center; width: 267.3px; margin-left: 0px; margin-top: 30px">
-          <nav class="navegation">
-            <a style="text-align: justify; margin-left: -150px; margin-top: 60px" href="https://insights.buildly.io/register" class="button button--secondary">Register Now</a>
-
-            <a style="text-align: justify; margin-left: 20px; margin-top: 60px" href="https://insights.buildly.io/register" class="button1">Learn more</a>
-          </nav>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="60000">
-        <div style="position: relative; padding-top: 56.25%;">
-          <iframe src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/f2f795be2701fe767dfa9c05812210f9/iframe?preload=true&autoplay=true&poster=https%3A%2F%2Fcustomer-oea4zxza4u5hx1zy.cloudflarestream.com%2F9f750b8f66e765ba499e8e7d7ce26cb2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0h0m12s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-        </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h2 style="text-align: justify; margin-left: -140px; margin-top: 10px">How does it work?</h2>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <img src="{% static 'img/AI.png' %}" class="img-bottom" style="width:400px; float: right; margin: 75px;">
-        <div class="carousel-caption d-none d-md-block" style="width: 500px;">
-          <h2 style="text-align: justify; margin-left: -140px; margin-top: 70px">Idea Translation AI</h2>
-            <p style="text-align: justify; margin-left: -140px; margin-top: 70px">Buildly Insights AI <b>translates your product ideas into technical documentation</b>
-              to speed up the development budgeting phase.
-              <br/>
-              <br/>
-              Once the documentation is translated, import your features from Trello, and then
-              use one of our other API integrations to share your technical tickets via GitHub<br/>
-              <nav class="navegation">
-                <p style="text-align: justify; margin-left: -150px; margin-top: 60px">(Available Now) or Jira (Coming Soon!)</p>
-
-                <img src="{% static 'img/github.png' %}" class="img-bottom" style="width:70px; float: right;  margin-left: 20px; margin-top: 60px">
-
-              </nav>
-              <br/>
-              <a style="text-align: justify; margin-left: 200px; margin-top: 60px" href="https://insights.buildly.io/register" class="button button--secondary">Register Now</a>
-            </p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-</div>
+</main>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <br/>
 <br/>
 <br/>
