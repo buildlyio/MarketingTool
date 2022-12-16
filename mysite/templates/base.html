@@ -31,18 +31,19 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WG6KE58XYW"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WG6KE58XYW');
+    </script>
     {% include "includes/banner.html" %}
     {% include "includes/header.html" %}
     <body class="{% block body_class %}{% endblock %}">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WG6KE58XYW"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-WG6KE58XYW');
-        </script>
         {% block content %}
 
         {% endblock %}
