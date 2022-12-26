@@ -28,5 +28,14 @@ EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_PASSWORD")  # new
 EMAIL_PORT = 587  # new
 EMAIL_USE_TLS = True  # new
 
-# TODO: static files are not served if this is False
-DEBUG = True
+AWS_STORAGE_BUCKET_NAME = 'buildly'
+AWS_ACCESS_KEY_ID = 'DO0064ZDDR838RB2GBQU'
+AWS_SECRET_ACCESS_KEY = os.getenv('SPACES_SECRET')
+AWS_S3_CUSTOM_DOMAIN = 'cms-static.nyc3.digitaloceanspaces.com' + "/" + AWS_STORAGE_BUCKET_NAME
+
+MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + "/" + AWS_STORAGE_BUCKET_NAME + "/"
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
