@@ -185,11 +185,3 @@ PUPUT_AS_PLUGIN = True
 
 SECRET_KEY = "sdfgerg32g90uadfgjo12!@89u9ergj924fsdf9889"
 
-
-AWS_STORAGE_BUCKET_NAME = 'buildly'
-AWS_ACCESS_KEY_ID = 'DO0064ZDDR838RB2GBQU'
-AWS_SECRET_ACCESS_KEY = os.getenv('SPACES_SECRET')
-AWS_S3_CUSTOM_DOMAIN = 'https://cms-static.nyc3.digitaloceanspaces.com'
-
-MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + "/"
-AWS_DEFAULT_ACL = 'public-read'
