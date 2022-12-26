@@ -49,6 +49,9 @@ COPY --chown=wagtail:wagtail . .
 # Use user "wagtail" to run the build commands below and the server itself.
 USER wagtail
 
+# Collect static files.
+RUN python manage.py collectstatic --noinput --clear
+
 # Runtime command that executes when "docker run" is called, it does the
 # following:
 #   1. Migrate the database.
@@ -59,6 +62,3 @@ USER wagtail
 #   phase facilities of your hosting platform. This is used only so the
 #   Wagtail instance can be started with a simple "docker run" command.
 CMD set -xe; gunicorn mysite.wsgi:application
-
-# Collect static files.
-CMD python manage.py collectstatic --noinput --clear
