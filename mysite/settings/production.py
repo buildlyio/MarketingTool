@@ -32,9 +32,14 @@ AWS_STORAGE_BUCKET_NAME = 'buildly'
 AWS_ACCESS_KEY_ID = 'DO00MW9V6QPPJKVCGHYA'
 AWS_SECRET_ACCESS_KEY = os.environ.get("SPACES_SECRET")
 AWS_S3_CUSTOM_DOMAIN = 'cms-static.nyc3.digitaloceanspaces.com' + "/" + AWS_STORAGE_BUCKET_NAME
+AWS_S3_ENDPOINT_URL  = 'https://cms-static.nyc3.digitaloceanspaces.com'
+
 
 MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + "/" + AWS_STORAGE_BUCKET_NAME + "/"
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_LOCATION = 'static'
+STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 AWS_DEFAULT_ACL = 'public-read'
