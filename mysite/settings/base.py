@@ -184,4 +184,3 @@ BASE_URL = 'http://buildly.io'
 PUPUT_AS_PLUGIN = True
 
 SECRET_KEY = "sdfgerg32g90uadfgjo12!@89u9ergj924fsdf9889"
-
