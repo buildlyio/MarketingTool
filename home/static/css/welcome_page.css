@@ -118,7 +118,7 @@ body {
 .logosocialmed{
   width: 33px;
   border-radius: 25px;
-  background-color: var(--red);
+  background-color: transparent;
   box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
 }
 .logoteam{
@@ -457,13 +457,17 @@ a:hover{
 
 /* GET STARTED NOW */
 
+.container-now {
+  padding: 0px 0px 300px 0px;
+}
+
 .now {
-  position:absolute;
-  padding: 80px 0px 50px 0px;
+  position:relative;
+  padding: 80px 30px 100px 0px;
   width: 950px;
   height: 359px;
-  left: 130px;
-  top: 4299px;
+  left: 150px;
+  top: 0px;
   background: #F07000;;
   border-radius: 50px;
   border: none;
