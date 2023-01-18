@@ -44,6 +44,15 @@ class Eula(Page):
 class Tos(Page):
     pass
 
+class contact_partnership(Page):
+    pass
+
+class contact_employment(Page):
+    pass
+
+class contact_other(Page):
+    pass
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
     inquiry = models.CharField(max_length=255, blank=True)

@@ -36,26 +36,21 @@
             {% csrf_token %}
             <section class="form-register">
                 <h4>Contact Us</h4>
+                <p>Choose the best option for you</p>
+                <p class="text-list">Type of Inquiry:</p>
                 <div class="disrow">
                   <div>
-                      <input class="controls" type="text" list="items" />
-                         <!-- List of options -->
-                         <datalist id="items">
-                         <option value="" selected="selected">Type of Inquiry</option>
-                         <option value="Partnership"></option>
-                         <option value="Employment,"></option>
-                         <option value="Community"></option>
-                         <option value="Other"></option>
-                         </datalist>
+                    <a href="/contact_partnership/" class="button button--primary">Partnership</a>
 
-                         {%for field in form%}
-                         <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
-                         {%endfor%}
+                    <a href="/contact_employment/" class="button button--primary">Employment</a>
 
-
-                      <input type="submit" class="buttons" data-sitekey="6Le_IUQjAAAAAL96VdafV8HcvdiOLNtA0Fo5UWBl" data-callback='onSubmit' data-action='submit'>
 
                   </div>
+                  <div>
+                    <a href="/contact_employment/" class="button button--primary">Community</a>
+
+                    <a href="/contact_employment/" class="button button--primary">Other</a>
+                </div>
               </div>
             </section>
             </form>
@@ -63,6 +58,10 @@
       </div>
     </main>
   </div>
+
+  {%for field in form%}
+                       <div class="col-md-6 p-2">{{field|as_crispy_field}}</div>
+                       {%endfor%}
 
 
 {% endblock content %}
