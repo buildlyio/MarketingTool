@@ -1,84 +1,104 @@
 {% load i18n wagtailcore_tags %}
 {% load static %}
 
-<footer class="footer">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+  <!-- ======= Footer ======= -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <footer id="footer" class="footer">
+  <div class="footer-top">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
 
-    <footer class="footer">
-    <div class="container bottom_border">
-    <div class="navegation footer">
-    <div class=" col-sm-4 col-md col-sm-4  col-12 col">
-        <div class="logo-footer">
-            <a href="/">
-              <img class="logo-footer" src="{% static 'img/buildly-logo.png' %}" alt="Logo">
-            </a>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Buildly, Inc.</h3>
+              <p>
+
+                Portland, OR, USA<br><br>
+                <strong>Email:</strong> info@buildly.io<br>
+              </p>
+            </div>
           </div>
-          <br/>
-    <p class="mb10">Buildly, Inc.<br/> Oregon City, Oregon<br/> 97045</p>
-    </div>
 
-    <div class=" col-sm-4 col-md  col-6 col">
-    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5><br/>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
 
-    <ul class="footer_ul_amrc">
-    <li><a href="https://insights.buildly.io" class="navegation__link">{% trans "Insights" %}</a></li>
-    <li><a href="/foundry/" class="navegation__link">{% trans "Foundry" %}</a></li>
-    <li><a href="/news/" class="navegation__link">{% trans "News" %}</a></li>
-    <li><a href="/about/" class="navegation__link">{% trans "About" %}</a></li>
-    <li><a href="/community/" class="navegation__link">{% trans "Community" %}</a></li>
-    </ul>
-    </div>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://insights.buildly.io" class="navegation__link">{% trans "Insights" %}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/foundry/" class="navegation__link">{% trans "Foundry" %}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/news/" class="navegation__link">{% trans "News" %}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/about/" class="navegation__link">{% trans "About" %}</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/community/" class="navegation__link">{% trans "Community" %}</a></li>
+            </ul>
+          </div>
 
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Privacy and Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#/terms">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/faq" class="navegation__link">FAQs</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/about" class="navegation__link">About Us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/contact" class="navegation__link">Contact Us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/privacy">Privacy Policty</a></li>
+            </ul>
+          </div>
 
-    <div class=" col-sm-4 col-md  col-6 col">
-    <h5 class="headin5_amrc col_white_amrc pt2">Developers</h5><br/>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Our Newsletter</h4>
+            <p>Sign up for the Buildly Insights Newsletter to get the latest info on release and open source projects</p>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+              hbspt.forms.create({
+                region: "na1",
+                portalId: "6404322",
+                formId: "61f05315-94e9-420e-a973-3620c0c09833"
+              });
+            </script>
 
-    <ul class="footer_ul_amrc">
-    <li><a href="https://buildly-core.readthedocs.io/en/latest/quickstart.html" class="navegation__link">Quickstart Guides</a></li><br/>
-    <li><a href="https://insights.buildly.io" class="navegation__link">Frameworks</a></li><br/>
-    <li><a href="https://insights.buildly.io" class="navegation__link">API Docs</a></li><br/>
-    </ul>
-    </div>
-
-    <div class=" col-sm-4 col-md  col-6 col">
-        <h5 class="headin5_amrc col_white_amrc pt2">Info</h5><br/>
-
-        <ul class="footer_ul_amrc">
-        <li><a href="/faq" class="navegation__link">FAQs</a></li>
-        <li><a href="/about" class="navegation__link">About Us</a></li>
-        <li><a href="/contact" class="navegation__link">Contact Us</a></li>
-        <li><a href="/privacy">Privacy Policty</a></li>
-        </ul>
+          </div>
 
         </div>
-
-    <div class=" col-sm-4 col-md  col-12 col">
-    <h5 class="headin5_amrc col_white_amrc pt2">Join Newsletter</h5>
-
-    <ul class="footer_ul2_amrc">
-    <li><i class="navegation__link"></i><p>Subscribe our newsletter to get more free design course and resource.</p></li>
-    <li><input class="controls" type="email" name="correo" id="correo" placeholder="Enter email"><span id="icon">
-    </span> </li>
-    </ul>
+      </div>
     </div>
-    </div>
-    </div>
-    <nav class="navegation">
-      <a><p> Copyright @ 2022 Buidly. All rights reserved </p></a>
-      <a class="text-right"><p>We use cookies for better service. <a href="https://insights.buildly.io/register"  class="banner-text">{% trans "Accept" %}</p></a>
-    </nav>
   </div>
+    <div class="footer-legal text-center">
+      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
 
-    </footer>
+        <div class="d-flex flex-column align-items-center align-items-lg-start">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Buildly, Inc.</span></strong>. All Rights Reserved
+          </div>
+         
+        </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</footer>
+      </div>
+          <a href="https://twitter.com/buildly_io" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.facebook.com/buildly_io" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/buildly_io/?igshid=YmMyMTA2M2Y%3D" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://twitter.com/buildly_io" class="github"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/company/20140360/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>

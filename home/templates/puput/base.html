@@ -1,74 +1,26 @@
 {% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags %}
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>
-        {% block title %}
-            {{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}
-        {% endblock title %}
-    </title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="title"
-          content="{% block meta_title %}
-                        {% if blog_page.seo_title %}
-                            {{ blog_page.seo_title }}
-                        {% else %}
-                            {{ blog_page.title }}
-                        {% endif %}
-                   {% endblock meta_title %}"/>
-    <meta name="description"
-          content="{% block meta_description %}
-                        {{ blog_page.search_description }}
-                   {% endblock meta_description %}"/>
-    {% block social_share %}{% endblock social_share %}
-    <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
+{% include "includes/app_header.html" %}
+{% include "includes/banner.html" %}
+{% include "includes/header.html" %}
+<link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
+<main id="main">
 
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,300italic,100italic,100,400italic,500,500italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
-    {% block css %}
-        <link rel='stylesheet' href="{% static 'puput/css/bootstrap.min.css' %}" type='text/css'/>
-        <link rel="stylesheet" href="{% static 'puput/css/font-awesome.min.css' %}">
-        <style>
-            body {
-                --main-color: {{blog_page.main_color}};
-            }
-        </style>
-        <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-        <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
 
-    {% endblock %}
-</head>
-<body>
-<div class="container-fluid">
-  {% include "includes/banner.html" %}
-  {% include "includes/header.html" %}
-</div>
-<div class="container">
-    {% block blog_header %}
-        <div class="about">
-            {% if blog_page.header_image %}
-                <span class="image featured">
-                    {% image blog_page.header_image fill-1500x120 as header_image %}
-                    <img alt="{{ blog_page.header_image.title }}" src="{{ header_image.url }}">
-                </span>
-            {% endif %}
-            <div class="container">
-                <section class="{% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %}">
-                    <h1 class="title-header">
-                        <a href="{% pageurl blog_page %}">{{ blog_page.title }}</a>
-                    </h1>
-                    {% if not blog_page.header_image %}
-                        <h2>{{ blog_page.description }}</h2>
-                    {% endif %}
-                </section>
-            </div>
-        </div>
-    {% endblock blog_header %}
-</div>
+        <ol>
+        <li><a href="/">Home</a></li>
+        <li>News</li>
+        </ol>
+        <h2>News</h2>
+
+    </div>
+    </section><!-- End Breadcrumbs -->
+
 {% wagtailuserbar %}
-<div class="container container-blog">
+<section id="blog" class="blog">
+<div class="container container-blog" data-aos="fade-up">
     <div class="row">
         <div class="col-sm-8 col-md-9">
             {% block content %}{% endblock content %}
@@ -125,6 +77,7 @@
         </div>
     </div>
 </div>
+</section>
 <div class="container">
     <div class="footer">
 
@@ -137,5 +90,8 @@
         <script src="{% static 'puput/js/puput.js' %}"></script>
     {% endblock js %}
 </div>
+{% include "includes/footer.html" %}
+
 </body>
 </html>
+

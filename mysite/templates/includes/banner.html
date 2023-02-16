@@ -1,5 +1,14 @@
 {% load i18n wagtailcore_tags %}
 {% load static %}
-<div class="card text-center" id="banner">
-  <h5 class="banner"> Register now for private beta access to <b><a href="https://insights.buildly.io/register"><img src="{% static 'img/insights-logo.png' %}" width="72.24px"></a></b><a href="https://insights.buildly.io/register" class="banner-text">{% trans "Click here " %}</a></h5>
-</div>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        Register now for private beta access to &nbsp; <a href="https://insights.buildly.io/register"><img src="{% static 'img/insights-logo.png' %}" width="150"></a>
+      </div>
+      <div class="cta d-none d-md-block">
+        <a href="https://insights.buildly.io/register" class="scrollto">Register Now</a>
+      </div>
+    </div>
+  </div>
