@@ -94,10 +94,11 @@ body {
 
 
 /** Globals **/
+
 .conteiner-home {
   width: min(90%, 120rem);
   margin: 0 auto;
-  padding: 50px 0px 200px 0px;
+  padding: 150px 0px 50px 0px;
 }
 a {
   text-decoration: none;
@@ -370,7 +371,9 @@ a:hover{
 
 /* costumers */
 
-/* Any Question: edit this session whith background-image: linear-gradient(to bottom, #F4F4F4, #F4F4F4);*/
+.conteiner-any {
+  padding: 0px 0px 300px 0px;
+}
 
 .any{
   position:absolute;
@@ -421,13 +424,17 @@ a:hover{
 
 /* GET STARTED NOW */
 
+.ontainer-now {
+  padding: 0px 0px 300px 0px;
+}
+
 .now {
-  position:absolute;
-  padding: 80px 0px 50px 0px;
+  position:relative;
+  padding: 80px 30px 100px 0px;
   width: 950px;
   height: 359px;
-  left: 130px;
-  top: 4299px;
+  left: 150px;
+  top: 0px;
   background: #F07000;;
   border-radius: 50px;
   border: none;
@@ -637,7 +644,7 @@ width: 150px;
   text-align: left;
 }
 footer {
-  padding: 300px 80px 0px 80px;
+  padding: 0px 80px 0px 80px;
   width:100%;
   background-color:#FFFFFF;
   min-height:250px;
@@ -860,3 +867,41 @@ input.input{
       margin-top: 15rem;
   }
 }
+
+/* social media aside*/
+
+.asidesocial{
+  float: right;
+  position: fixed;
+  right: 20px;
+  margin-top: 25vh;
+  margin-right: 20px;
+  z-index: 90;
+}
+.sc{
+  padding: 2px;
+  padding-left: 4px;
+}
+.yt{
+  padding: 2.2px;
+}
+.bc{
+  padding: 2px;
+}
+.p{
+  padding: 7px;
+}
+.logosocialmed{
+  width: 33px;
+  border-radius: 25px;
+  background-color: transparent;
+  box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
+}
+.logoteam{
+  width: 20px;
+  height: 20px;
+  width: 20px;
+  border-radius: 25px;
+  box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
