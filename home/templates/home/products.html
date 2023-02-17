@@ -11,8 +11,8 @@
 {% block content %}
 
 
-<main class="conteiner-home">
-	<div class="container-commun">
+<section id="insights" class="about">
+    <div class="container" data-aos="fade-up">
 		<div class="container-commun__text">
 			<h4 class="card-title">Products</h4><br/>
 			<div>
@@ -48,7 +48,121 @@
 			</div>
 		</main>
 	</div>
-	<div class="container-commun">
+</section>
+<section id="core" class="about">
+	<div class="container" data-aos="fade-up">
+		<div class="container-commun__text">
+			<h4 class="card-title">Core Gateway + Ooen Source</h4><br/>
+				<div style="position: relative;">
+					<!-- You can use styles and CSS on this iframe element where the video player will appear -->
+					<iframe
+					  src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/f192d5dec1a35f2ec350f4ca97d9ca91/iframe"
+					  style="border: none"
+						width="700"
+						height="450"
+					  allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;"
+					  allowfullscreen="true"></iframe>
+
+					<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+
+					<!-- Your JavaScript code below-->
+					<script>
+					  const player = Stream(document.getElementById('stream-player'));
+					  player.addEventListener('play', () => {
+					    console.log('playing!');
+					  });
+					  player.play().catch(() => {
+					    console.log('playback failed, muting to try again');
+					    player.muted = true;
+					    player.play();
+					  });
+					</script>
+				</div>
+		</div>
+		<main class="container">
+			<div class="container-commun">
+				<div class="container-commun__text">
+					<h4 class="card-title">Buildly Open Source Core</h4><br/>
+					<div class="container">
+					<div class="line">
+					<p></p>
+					</div>
+					</div>
+					<br/>
+					<h1>Gateway + Microservice Architectures</h1>
+					<p>
+						With Buildly Gateway + service, it's simple for teams to build microservice architectures that allow for centralized management, passthrough authentication and a datamesh.  
+						With the Buildly Core teams will feel like that buildling a simple monolith or single service application, but with the division and reuseable components to make merge conflicts and 
+						multiple requests a thing of the past.
+					</p>
+					<p>
+						<div class="container">
+							<a href="https://www.github.com/buildlyio" class="btn-learn-more">Join our GitHub Community</a>
+						</div>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+</section>
+<section id="components" class="about">
+	<div class="container" data-aos="fade-up">
+		<div class="container-commun__text">
+			<h4 class="card-title">Component Based Software Architecture</h4><br/>
+				<div style="position: relative;">
+					<!-- You can use styles and CSS on this iframe element where the video player will appear -->
+					<iframe
+					  src="https://customer-oea4zxza4u5hx1zy.cloudflarestream.com/f192d5dec1a35f2ec350f4ca97d9ca91/iframe"
+					  style="border: none"
+						width="700"
+						height="450"
+					  allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;"
+					  allowfullscreen="true"></iframe>
+
+					<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+
+					<!-- Your JavaScript code below-->
+					<script>
+					  const player = Stream(document.getElementById('stream-player'));
+					  player.addEventListener('play', () => {
+					    console.log('playing!');
+					  });
+					  player.play().catch(() => {
+					    console.log('playback failed, muting to try again');
+					    player.muted = true;
+					    player.play();
+					  });
+					</script>
+				</div>
+		</div>
+		<main class="container">
+			<div class="container-commun">
+				<div class="container-commun__text">
+					<h4 class="card-title">Buildly Open Source Components</h4><br/>
+					<div class="container">
+					<div class="line">
+					<p></p>
+					</div>
+					</div>
+					<br/>
+					<h1>Software Components</h1>
+					<p>
+						With Buildly Gateway + system, a components driven architecture, allowing for reuse and single services, allows microservice archtecture at the enterprise level to be incredible simple and efficent.
+						When you reuse a service, it can be deployed and reconfigured in minutes and allow for new versions to be managed from one upstream service.  If you hre-service a component, it can be used from one hosted service and database and 
+						reduce reduneant data and allow for sharing across you organization or teams.  
+					</p>
+					<p>
+						<div class="container">
+							<a href="https://www.github.com/buildlyio" class="btn-learn-more">Join our GitHub Community</a>
+						</div>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+</section>
+<section id="opensource" class="opensource">
+	<div class="container" data-aos="fade-up">
 		<div class="container-commun__text">
 			<h4 class="card-title">Developer Tools</h4><br/>
 				<div style="position: relative;">
@@ -77,10 +191,10 @@
 					</script>
 				</div>
 		</div>
-		<main class="conteiner-home">
+		<main class="container">
 			<div class="container-commun">
 				<div class="container-commun__text">
-					<h4 class="card-title">Buildly Open Source Core</h4><br/>
+					<h4 class="card-title">Buildly Open Source</h4><br/>
 					<div class="container">
 					<div class="line">
 					<p></p>
@@ -93,14 +207,14 @@
 					</p>
 					<p>
 						<div class="entrada__contenido">
-							<a href="https://www.github.com/buildlyio" class="button button--primary" style="float: center; width: 267.3px; margin-left: 160px; margin-top: 30px">Join our GitHub Community</a>
+							<a href="https://www.github.com/buildlyio" class="btn-learn-more">Join our GitHub Community</a>
 						</div>
 					</p>
 				</div>
 			</div>
 		</main>
 	</div>
-</main>
+</section>
 
 
 {% endblock content %}

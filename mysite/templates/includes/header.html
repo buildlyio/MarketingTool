@@ -5,6 +5,9 @@
   <header id="header" class="fixed-top d-flex align-items-center header-inner-pages">
     <div class="container d-flex align-items-center justify-content-between">
 
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
       <a href="/" class="logo"><img src="{% static 'img/buildly-logo-white-transparent.png' %}" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
@@ -14,10 +17,10 @@
           <li class="dropdown megamenu"><a href="/products/"><span>Products</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li>
-                <a href="/products#insights">Buildly Insights</a>
-                <a href="/products#core">Buildly Core Gateway +</a>
-                <a href="/products#core">Buildly Components</a>
-                <a href="/products#opensource">Buildly Open Source</a>
+                <a href="/products#insights" class="nav-link scrollto">Buildly Insights</a>
+                <a href="/products#core" class="nav-link scrollto">Buildly Core Gateway +</a>
+                <a href="/products#components" class="nav-link scrollto">Buildly Components</a>
+                <a href="/products#opensource" class="nav-link scrollto">Buildly Open Source</a>
               </li>
             </ul>
           </li>
