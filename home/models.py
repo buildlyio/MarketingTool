@@ -29,6 +29,9 @@ class Community(Page):
 class BlankPage(Page):
     pass
 
+class DevelopersPage(Page):
+    pass
+
 class Faq(Page):
     pass
 
