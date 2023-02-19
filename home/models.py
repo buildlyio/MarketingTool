@@ -54,6 +54,8 @@ class ContactMail(models.Model):
     email = models.CharField(max_length=255, blank=True)
     file = models.CharField(max_length=255, null=True, blank=True)
     url = models.CharField(max_length=255, blank=True)
+    read = models.BooleanField(default=False)
+    spam = models.BooleanField(default=False)
     create_date = models.DateTimeField(null=True, blank=True)
     edit_date = models.DateTimeField(null=True, blank=True)
 
