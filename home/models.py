@@ -29,7 +29,7 @@ class Community(Page):
 class BlankPage(Page):
     pass
 
-class FAQ(Page):
+class Faq(Page):
     pass
 
 class Products(Page):
@@ -39,6 +39,9 @@ class Privacy(Page):
     pass
 
 class Eula(Page):
+    pass
+
+class PartnerSurvey(Page):
     pass
 
 class Tos(Page):
