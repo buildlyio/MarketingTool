@@ -85,7 +85,7 @@ class ContactMail(models.Model):
 
 
 class ContactMailAdmin(admin.ModelAdmin):
-    list_display = ('name','email','url','create_date','edit_date')
+    list_display = ('name','email','url','read','spam','create_date','edit_date')
     search_fields = ('name','email')
     list_filter = ('name',)
     display = 'Contact Form'

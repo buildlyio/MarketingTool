@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block body_class %}template-homepage{% endblock %}
-
-{% block extra_css %}
-
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
-
 {% block content %}
 
+<main id="main">
 
 <section id="insights" class="about">
     <div class="container" data-aos="fade-up">
@@ -176,6 +170,6 @@
 		</main>
 	</div>
 </section>
-
+</main>
 
 {% endblock content %}
