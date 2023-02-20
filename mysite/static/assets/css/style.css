@@ -548,7 +548,7 @@ h6 {
   height: auto;
 }
 
-#hero .btn-get-started {
+.btn-get-started {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -565,7 +565,7 @@ h6 {
   border: 2px solid #F9943B;
 }
 
-#hero .btn-get-started:hover {
+.btn-get-started:hover {
   background: #F9943B;
   color: #fff;
   text-decoration: none;
@@ -728,7 +728,7 @@ section {
   margin-bottom: 0;
 }
 
-.about .content .btn-learn-more {
+.btn-learn-more {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -745,7 +745,7 @@ section {
   border: 2px solid #0880e8;
 }
 
-.about .content .btn-learn-more:hover {
+.btn-learn-more:hover {
   background: #0880e8;
   color: #fff;
   text-decoration: none;
@@ -2095,14 +2095,14 @@ section {
   margin-bottom: 25px;
 }
 
-.blog .blog-comments .reply-form .btn-primary {
+.btn-primary {
   border-radius: 4px;
   padding: 10px 20px;
   border: 0;
   background-color: #0880e8;
 }
 
-.blog .blog-comments .reply-form .btn-primary:hover {
+.btn-primary:hover {
   background-color: #138df7;
 }
 
