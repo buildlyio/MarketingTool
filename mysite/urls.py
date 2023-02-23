@@ -21,6 +21,7 @@ urlpatterns = [
 
     path('search/', search_views.search, name='search'),
     path('contact/', home_views.contactView, name='contact'),
+    path('insights/', home_views.register, name='insights'),
     path('success/', home_views.successView, name='success'),
 
 ]

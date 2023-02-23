@@ -44,6 +44,9 @@ class Privacy(Page):
 class Eula(Page):
     pass
 
+class PartnerPage(Page):
+    pass
+
 class PartnerSurvey(Page):
     pass
 

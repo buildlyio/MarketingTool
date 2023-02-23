@@ -49,6 +49,6 @@ def register(request):
             return render(request, 'registration_success.html')
         else:
             error_message = 'Failed to register. Error code: {}'.format(response.status_code)
-            return render(request, 'register.html', {'error_message': error_message})
+            return render(request, 'home/register_dev.html', {'error_message': error_message})
     else:
-        return render(request, 'register.html')
+        return render(request, 'home/register_dev.html')
