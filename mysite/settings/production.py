@@ -46,3 +46,5 @@ AWS_DEFAULT_ACL = 'public-read'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+INSIGHTS_API_URL = "https://insights-api.buildly.io/"

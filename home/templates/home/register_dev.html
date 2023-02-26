@@ -4,18 +4,14 @@
 {% block content %}
 
 {% load static %}
+<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
 
 <style>
 @media (min-width: 1025px) {
 }
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-font-size: 1rem;
-line-height: 2.15;
-padding-left: .75em;
-padding-right: .75em;
-}
-.card-registration .select-arrow {
-top: 13px;
+
+a {
+  color:#F9943B;
 }
 
 .gradient-custom-2 {
@@ -54,10 +50,10 @@ border-bottom-right-radius: 15px;
     <!--Register-->
 
 		<div class="card px-5 py-5" style="border-radius: 15px;">
-      <section id="services" class="services">
+
         <div class="section-title">
           <h2>
-            Foundry Partners
+            Foundry Partner Registration
           </h2>
         </div>
         <div class="row align-items-center">
@@ -85,11 +81,20 @@ border-bottom-right-radius: 15px;
             </div>
           </div>
         </div>
-      </section>
+  
     </div>
 
     {% if error_message %}
-      <p>{{ error_message }}</p>
+    <br/>
+    <div class="card px-5 py-5" style="border-radius: 15px;">
+      <div class="text-center mt-4">
+        <span>There was a problem with you Registration...</span>
+        <p>
+        <small class="mt-2 text-muted">{{ error_message }}</small>
+        </p>
+        <a href="https://insights.buildly.io/login" class="text-decoration-none">Login</a>
+      </div>
+    </div>
     {% endif %}
     <br/>
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -103,46 +108,42 @@ border-bottom-right-radius: 15px;
                   {% csrf_token %}
                   <h3 class="fw-normal mb-5" style="color: #0B6AB7;">Organization Infomation</h3>
 
+                  <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline">
+                      <input type="text" id="orgname" class="form-control form-control-lg" name="organization"/>
+                      <label class="form-label" for="orgname">Organization Name</label>
+                    </div>
+
+                  </div>
+
                   <div class="mb-4 pb-2">
-                    <select class="select" name="type">
-                      <option value="">Organization Type</option>
+                    <select class="select form-control form-control-lg" name="type" id="type">
+                      <option value="">-- select -- </option>
                       <option value="1">Agency</option>
                       <option value="2">Technical CoFounder</option>
                       <option value="3">Other</option>
                     </select>
+                    <label class="form-label" for="type">Organization Type</label>
                   </div>
 
-
-                    <div class="col-md-6 mb-4 pb-2">
-
-                      <div class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" name="organization"/>
-                        <label class="form-label" for="form3Examplev2">Organization Name</label>
-                      </div>
-
+                  <div class="form-outline">
+                    <div class="mb-4 pb-2">
+                      <select class="select form-control form-control-lg" name="technical_type" id="technical_type">
+                        <option value="">-- select -- </option>
+                        <option value="1">Software Development</option>
+                        <option value="2">Design UI/UX</option>
+                        <option value="3">Marketing</option>
+                        <option value="3">Finance</option>
+                        <option value="3">Investor/Accelerator</option>
+                      </select>
+                      <label class="form-label" for="technical_type">Specialty</label>
                     </div>
-
-
-                      <div class="form-outline">
-                        <div class="mb-4 pb-2">
-                          <select class="select" name="technical_type">
-                            <option value="">Specialty</option>
-                            <option value="1">Software Development</option>
-                            <option value="2">Design UI/UX</option>
-                            <option value="3">Marketing</option>
-                            <option value="3">Finance</option>
-                            <option value="3">Investor/Accelerator</option>
-                          </select>
-  
-                        </div>
-                      </div>
-
-      
-
+                  </div>
 
                   <div class="mb-4 pb-2">
-                    <select name="timezone_offset" id="timezone-offset" class="span5">
-                      <option value="">TimeZone/Location</option>
+                    <select name="timezone_offset" id="timezone-offset" class="span5 form-control form-control-lg" id="timezone">
+                      <option value="">-- select -- </option>
                       <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
                       <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
                       <option value="-10:00">(GMT -10:00) Hawaii</option>
@@ -158,7 +159,7 @@ border-bottom-right-radius: 15px;
                       <option value="-03:00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
                       <option value="-02:00">(GMT -2:00) Mid-Atlantic</option>
                       <option value="-01:00">(GMT -1:00) Azores, Cape Verde Islands</option>
-                      <option value="+00:00" selected="selected">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                      <option value="+00:00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
                       <option value="+01:00">(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
                       <option value="+02:00">(GMT +2:00) Kaliningrad, South Africa</option>
                       <option value="+03:00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
@@ -184,6 +185,7 @@ border-bottom-right-radius: 15px;
                       <option value="+13:00">(GMT +13:00) Apia, Nukualofa</option>
                       <option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
                     </select>
+                    <label class="form-label" for="timezone">TimeZone/Location</label>
                   </div>
 
                 </div>
@@ -194,37 +196,37 @@ border-bottom-right-radius: 15px;
 
                   <div class="mb-4 pb-2">
                     <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="first_name"/>
-                      <label class="form-label" for="form3Examplea2">First Name</label>
+                      <input type="text" id="first_name" class="form-control form-control-lg" name="first_name"/>
+                      <label class="form-label" for="first_name">First Name</label>
                     </div>
                   </div>
 
                   <div class="mb-4 pb-2">
                     <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="last_name"/>
-                      <label class="form-label" for="form3Examplea2">Last Name</label>
+                      <input type="text" id="last_name" class="form-control form-control-lg" name="last_name"/>
+                      <label class="form-label" for="last_name">Last Name</label>
                     </div>
                   </div>
 
                   <div class="mb-4 pb-2">
                     <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="user_name"/>
-                      <label class="form-label" for="form3Examplea2">User Name</label>
+                      <input type="text" id="user_name" class="form-control form-control-lg" name="user_name"/>
+                      <label class="form-label" for="user_name">User Name</label>
                     </div>
                   </div>
 
 
                   <div class="mb-4">
                     <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea9" class="form-control form-control-lg" name="email"/>
-                      <label class="form-label" for="form3Examplea9">Your Email</label>
+                      <input type="text" id="email" class="form-control form-control-lg" name="email"/>
+                      <label class="form-label" for="email">Your Email</label>
                     </div>
                   </div>
 
                   <div class="mb-4">
                     <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea9" class="form-control form-control-lg" name="password"/>
-                      <label class="form-label" for="form3Examplea9">Password</label>
+                      <input type="password" id="password" class="form-control form-control-lg" name="password"/>
+                      <label class="form-label" for="password">Password</label>
                     </div>
                   </div>
 
@@ -236,7 +238,7 @@ border-bottom-right-radius: 15px;
                       </label>
                   </div>
 
-                  <button type="button" class="btn btn-light btn-lg"
+                  <button type="submit" class="btn btn-light btn-lg"
                     data-mdb-ripple-color="dark">Register</button>
                   </form>
                 </div>
@@ -258,31 +260,29 @@ border-bottom-right-radius: 15px;
 </section>
 
 
-
-
-        <script>
-          $(function() {
-            $("#organization_name").autocomplete({
-              source: function(request, response) {
-                $.getJSON("/api/organizations/", {
-                  name: request.term
-                }, function(data) {
-                  response($.map(data, function(item) {
-                    return {
-                      label: item.name,
-                      value: item.name,
-                      id: item.id
-                    };
-                  }));
-                });
-              },
-              minLength: 2,
-              select: function(event, ui) {
-                $("#organization_id").val(ui.item.id);
-              }
-            });
-          });
-        </script>
+<script>
+  $(document).ready(function() {
+    $("#orgname").autocomplete({
+      source: function(request, response) {
+        $.getJSON("https://insights-api.buildly.io/organization/names/", {
+          name: request.term
+        }, function(data) {
+          response($.map(data, function(item) {
+            return {
+              label: item.name,
+              value: item.name,
+              id: item.id
+            };
+          }));
+        });
+      },
+      minLength: 2,
+      select: function(event, ui) {
+        $("#orgname").val(ui.item.id);
+      }
+    });
+  });
+</script>
 				
 		  
 
