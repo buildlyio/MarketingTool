@@ -39,7 +39,7 @@ def register(request):
         # Inlcude your data
         client_id = "c5y6V0rxqAKFWeakxkIvQLTGPj6NmaRyUfBmt6J8"
         client_secret = "MhHHQyo25qMITKzp7AsvtZMg2EbDYKKOyeudcGRgIO1IKabtbzUx5yekPMwtuLXHXv9ZC1DbqSBSTW13ed2RUK6NNz9DFDhKT58eOKiqZDEaG5EanVLV8uUqw7ovc1Oy"
-        redirect_uri = "http:127.0.0.1:8000/insights"
+        redirect_uri = settings.BASE_URL + "insights"
 
         # Create a session object
         oauth = OAuth2Session(client_id, redirect_uri = redirect_uri)
@@ -78,10 +78,11 @@ def register(request):
             'password': password,
             'email': email,
         }
-        response = requests.post(api_endpoint, data=data)
+        head = {'Authorization': 'token {}'.format(token)}
+        response = requests.post(api_endpoint, data=data, headers=head)
 
         if response.status_code == 200:
-            return render(request, 'registration_success.html', headers={'Authorization': 'access_token myToken'})
+            return render(request, 'registration_success.html')
         else:
             error_message = 'Failed to register. Error code: {}'.format(response.status_code)
             return render(request, 'home/register_dev.html', {'error_message': error_message})
