@@ -10,3 +10,6 @@ django-el-pagination
 django-storages
 boto3
 requests-oauthlib
+web3
+crypto
+openai

@@ -186,3 +186,6 @@ PUPUT_AS_PLUGIN = True
 SECRET_KEY = "sdfgerg32g90uadfgjo12!@89u9ergj924fsdf9889"
 
 INSIGHTS_API_URL = "https://rm-dev-api.buildly.io/"
+
+# settings.py
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

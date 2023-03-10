@@ -1,0 +1,109 @@
+{% block content %}
+
+<button type="button" class="support-button">
+  Need Help?
+</button>
+
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="supportModalLabel">Buildly Support Bot</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <!-- Support chat interface -->
+            <div class="support-chat">
+              <div class="messages"></div>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Type your message...">
+                <button class="btn btn-primary">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+      xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    }
+  }
+});
+
+
+  // Initialize the modal
+  var supportModal = new bootstrap.Modal(document.getElementById('supportModal'), {
+    keyboard: false,
+    backdrop: 'static',
+  });
+
+  // Send the user's message to the server and get a response from the OpenAI API
+  function sendMessage(message) {
+    $.ajax({
+      type: 'POST',
+      url: '/chatbot/',
+      data: {
+        message: message
+      },
+      success: function(response) {
+        // Update the chat interface with the response
+        $('.support-chat .messages').append('<div class="message"><div class="text">' + response.text + '</div></div>');
+        $('.support-chat').scrollTop($('.support-chat')[0].scrollHeight);
+      },
+      error: function() {
+        // Handle errors
+      }
+    });
+  }
+
+  $(function() {
+    // Show the modal when the user clicks the support button
+    $('.support-button').on('click', function() {
+      supportModal.show();
+    });
+
+    // Send messages when the user presses enter or clicks the send button
+    $('.support-chat .input-group input').on('keypress', function(e) {
+      if (e.keyCode === 13) {
+        sendMessage($(this).val());
+        $(this).val('');
+      }
+    });
+
+    $('.support-chat .input-group button').on('click', function() {
+      sendMessage($('.support-chat .input-group input').val());
+      $('.support-chat .input-group input').val('');
+    });
+  });
+</script>
+
+
+{% endblock %}

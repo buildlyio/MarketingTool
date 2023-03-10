@@ -23,6 +23,7 @@ urlpatterns = [
     path('contact/', home_views.contactView, name='contact'),
     path('insights/', home_views.register, name='insights'),
     path('success/', home_views.successView, name='success'),
+    path('chatbot/', home_views.chatbot, name='chatbot'),
 
 ]
 

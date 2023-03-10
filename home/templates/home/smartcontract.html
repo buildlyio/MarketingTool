@@ -1,0 +1,15 @@
+
+<h1>Contract with Signature and Blockchain Address</h1>
+<embed src="{{ pdf_url }}" type="application/pdf" width="100%" height="600px">
+<form method="POST" action="{% url 'upload_contract' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="signature">Digital Signature:</label>
+    <input type="text" id="signature" name="signature">
+    <input type="hidden" id="contract_id" name="contract_id" value="{{ contract_id }}">
+    <input type="submit" value="Submit">
+</form>
+{% if blockchain_address %}
+    <h2>Blockchain Address:</h2>
+    <p>{{ blockchain_address }}</p>
+{% endif %}
+

@@ -32,3 +32,4 @@ try:
 except ImportError:
     pass
 
+OPENAI_API_KEY = "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"
