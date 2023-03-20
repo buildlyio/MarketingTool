@@ -56,6 +56,9 @@ class PartnerSurvey(Page):
 class Tos(Page):
     pass
 
+class Enterprise(Page):
+    pass
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
     inquiry = models.CharField(max_length=255, blank=True)

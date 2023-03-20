@@ -1,26 +1,137 @@
 {% block content %}
+{% load static %}
 
 <button type="button" class="support-button">
-  Need Help?
+  <img src="{% static 'img/Buildly-Bot.png' %}" width="75px"> Need Help?
 </button>
+
+<style>
+.support-button {
+  float: right;
+}
+  /* Style the response container */
+#response-container {
+  height: 300px; /* Set the container height */
+  overflow-y: scroll; /* Add scrolling behavior */
+}
+
+/* Style the response spinner */
+#response-spinner {
+  text-align: center;
+}
+
+/* Style the response content */
+#response-content {
+  margin-top: 10px;
+}
+
+#chat-container {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#answer-area {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+#prompt-form {
+  margin-top: auto;
+}
+</style>
 
 <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="supportModalLabel">Buildly Support Bot</h5>
+        <img src="{% static 'img/Buildly-Bot.png' %}" width="150px" style="float: right;">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-12">
             <!-- Support chat interface -->
-            <div class="support-chat">
-              <div class="messages"></div>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Type your message...">
-                <button class="btn btn-primary">Send</button>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <!-- Include the Spin.js library -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+
+            <script type="text/javascript">
+              $(document).ready(function(){
+              // Create a new spinner instance
+                const spinner = new Spinner({ color: '#fff' });
+
+                // Show the spinner while waiting for the response
+                function showSpinner() {
+                  $('#response').html('');
+                  spinner.spin(document.getElementById('spinner'));
+                }
+
+                // Hide the spinner when the response is received
+                function hideSpinner() {
+                  spinner.stop();
+                }
+              
+                // Submit the form via AJAX and update the UI
+                function submitForm() {
+                  const prompt = $('#prompt').val();
+                  $.ajax({
+                    url: '/chatbot/',
+                    method: 'POST',
+                    data: { 'prompt': prompt, 
+                    'csrfmiddlewaretoken': '{{ csrf_token }}' 
+                    },
+                    beforeSend: showSpinner, // Show the spinner before the request is sent
+                    success: function(data) {
+                      hideSpinner(); // Hide the spinner when the response is received
+                      $('#response').html(data['response']);
+                      // add this code to the success function in your AJAX request
+                      answerArea.scrollTop = answerArea.scrollHeight;
+                    },
+                    error: function(xhr, status, error) {
+                      console.error('Error:', error);
+                      hideSpinner(); // Hide the spinner on error
+                    }
+                  });
+                  return false; // Prevent the default form submission
+                }
+
+                // Submit the form when it's submitted via button or Enter key
+                $('#prompt-form').on('submit', function(event) {
+                  event.preventDefault();
+                  submitForm();
+                });
+
+                $('#prompt').on('keydown', function(event) {
+                  if (event.keyCode === 13) { // Enter key
+                    event.preventDefault();
+                    submitForm();
+                  }
+                });
+              });
+            </script>
+            <div id="chat-container">
+              <div id="answer-area">
+                <!-- Add a container for the response content -->
+                <div id="response-container">
+                  <div id="response-spinner"></div>
+                  <div id="response"></div>
+                </div>
               </div>
+
+              <form id="prompt-form">
+                <label for="prompt">Enter your question:</label>
+                <input type="text" id="prompt" name="prompt">
+                <button type="submit">Submit</button>
+                {% csrf_token %}
+              </form>
+            </div>
+
+            
             </div>
           </div>
         </div>
@@ -35,67 +146,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
-$.ajaxSetup({
-  beforeSend: function(xhr, settings) {
-    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-      xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-    }
-  }
-});
-
-
   // Initialize the modal
   var supportModal = new bootstrap.Modal(document.getElementById('supportModal'), {
     keyboard: false,
     backdrop: 'static',
   });
 
-  // Send the user's message to the server and get a response from the OpenAI API
-  function sendMessage(message) {
-    $.ajax({
-      type: 'POST',
-      url: '/chatbot/',
-      data: {
-        message: message
-      },
-      success: function(response) {
-        // Update the chat interface with the response
-        $('.support-chat .messages').append('<div class="message"><div class="text">' + response.text + '</div></div>');
-        $('.support-chat').scrollTop($('.support-chat')[0].scrollHeight);
-      },
-      error: function() {
-        // Handle errors
-      }
-    });
-  }
-
   $(function() {
     // Show the modal when the user clicks the support button
     $('.support-button').on('click', function() {
       supportModal.show();
-    });
-
-    // Send messages when the user presses enter or clicks the send button
-    $('.support-chat .input-group input').on('keypress', function(e) {
-      if (e.keyCode === 13) {
-        sendMessage($(this).val());
-        $(this).val('');
-      }
     });
 
     $('.support-chat .input-group button').on('click', function() {

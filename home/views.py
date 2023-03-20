@@ -141,31 +141,84 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 def chatbot(request):
+
+    COMPLETIONS_MODEL = "text-davinci-003"
+    EMBEDDING_MODEL = "text-embedding-ada-002"
+
     openai.api_key = settings.OPENAI_API_KEY
+     # Set up the OpenAI API request
     if request.method == 'POST':
-        message = request.POST.get('message')
-        if message:
-            # Set up the OpenAI API request
-            url = 'https://api.openai.com/v1/engines/davinci-codex/completions'
-            headers = {
-                'Content-Type': 'application/json',
-                'Authorization': f'Bearer {openai.api_key}' # Replace with your actual OpenAI API key
-            }
-            data = {
-                'prompt': message,
-                'max_tokens': 50,
-                'n': 1,
-                'stop': '\n'
-            }
+        context = "Answer the question as truthfully as possible, and if you're unsure of the answer, say 'Sorry, I don't know'."
+        context = prompt = """Answer the question as truthfully as possible using the provided text, and if the answer is not contained within the text below, say "I don't know"
 
-            # Send the request to OpenAI's API
-            response = requests.post(url, headers=headers, json=data)
+            Context:
+            Buildly helps teams create applications faster by eliminating slow setup steps and lowering the number of iterations 
+            in development.  Our proprietary AI translates requirements into a technical documents and prototypes to help teams 
+            start building a product faster.   The Insights management and reporting tool, makes it easy to work with remote and 
+            in-house teams with single platform communication tools and faster release timelines.
+            Buildly Insights can also help document your business and product ideas and securely share it with their party outsource 
+            providers, investors and more with Buildly Insights.  Insights helps product teams and software developers work better 
+            and faster together by translating business requirements into technical documentation, budgets, staffing and 
+            architectural requirements and then uses trained AI and learning models to plan and predict release schedules.  
 
-            # Get the AI's response from the API's JSON response
-            ai_response = response.json()['choices'][0]['text']
+            The Buildly core is an open source API and Gateway + management layer that enables developers to build distributed 
+            and cloud native applications without any strings, but also provides the designers and 
+            frontend developers with an easy to use single point of entry for storing data and logic, as well connecting to third party tools.
 
-            # Return the AI's response as a JSON object to the client
-            return JsonResponse({'response': ai_response})
-    
-    # If the request is not a POST request, or the message parameter is missing, just render the chat.html template
-    return render(request, 'chat.html')
+            Buildly Inc. and its founders own the technology and control the software licenses, but it being open source also 
+            allows forks and ownership of downstream repos by the companies or users doing the forking to within the limits of the licenses.  
+            However, we also believe that the current OSI and open source licenses do not do enough to protect the rights and usage for
+            SaaS companies like Buildly and our working on a new community source option that is more friendly to SaaS and hosted service 
+            companies and will allow monetization of open source in a new way.
+
+            Both the marketplace and the release management tools depend on companies having a development team (usually remote) 
+            that understand good software architecture, microservices and cloud infrastructure to some level.  We have developed a 
+            partner marketplace place with 20+ partner development agencies from all over the world.  These companies bring customers to 
+            our platform, and we as well bring customers to them.  They are certified Buildly developer teams and work well with enterprise, 
+            startup or open source project teams to migrate existing projects to cloud native approaches or build new projects with the 
+            Buildly architecture.  They also bring customers on the hosted platform for release management, products tools, versioning 
+            and marketplace add-ons to speed up the process and develop standardized processes.
+
+            The Buildly Foundry combine tools, advisors and Development Team partners to help underserved communities get 
+            innovative and build products for deployment on cloud native architectures as well as to our marketplace
+
+            The Foundry includes the easy to use Open Cloud Kit to get you started fast with the Buildly Core, process and deployment 
+            tools as well as multiple, recommended open source projects to help teams manage the chaos deploying an application
+            Free 3 months of use of our hosted process and release tools so you and your team are always on the same page, and 
+            ongoing discount for graduates. A network of trained and certified development partners
+            Experienced and well trained Field CTOs to fill the gap while finding your technical co-founder free for the first 3 months.
+
+            All this allows you to focus on the vision and stop worrying about the technical problems
+
+            https://www.buildly.io
+
+            http://www.github.com/buildlyio
+
+            https://twitter.com/buildly_io
+
+            https://www.youtube.com/channel/UCgVZzoAyC_VHASqhqc0dJXw
+
+            http://www.instagram.com/buildly_io
+
+            http://www.instagram.com/buildly_io
+
+            http://www.facebook.com/buildlyio
+
+            http://www.linkedin.com/company/buildlyio    
+            """
+        prompt = context + request.POST.get('prompt', '')
+        print(prompt)
+        response = openai.Completion.create(
+            prompt=prompt,
+            max_tokens=100,
+            n=1,
+            stop=None,
+            temperature=0,
+            model=COMPLETIONS_MODEL
+        )
+        print(response.choices[0].text)
+        return JsonResponse({'response': response.choices[0].text})
+    else:
+        # If the request is not a POST request, or the message parameter is missing, just render the chat.html template
+        return render(request, 'chat.html')
+openai.api_base = "https://api.openai.com/v1"
