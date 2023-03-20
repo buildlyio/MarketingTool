@@ -48,3 +48,5 @@ AWS_DEFAULT_ACL = 'public-read'
 DEBUG = False
 
 INSIGHTS_API_URL = "https://insights-api.buildly.io/"
+
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
