@@ -59,6 +59,33 @@ class Tos(Page):
 class Enterprise(Page):
     pass
 
+class Contract(models.Model):
+    party_one = models.CharField(max_length=255, null=True, blank=True)
+    party_two = models.CharField(max_length=255, null=True, blank=True)
+    hash = models.CharField(max_length=255, null=True, blank=True)
+    file = models.CharField(max_length=255, null=True, blank=True)
+    text = models.TextField(null=True, blank=True)
+    create_date = models.DateTimeField(null=True, blank=True)
+    edit_date = models.DateTimeField(null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+    def save(self, *args, **kwargs):
+        # onsave add create date or update edit date
+        if self.create_date == None:
+            self.create_date = timezone.now()
+        self.edit_date = timezone.now()
+        super(Contract, self).save(*args, **kwargs)
+
+
+class ContractAdmin(admin.ModelAdmin):
+    list_display = ('party_one','party_two','create_date','edit_date')
+    search_fields = ('party_one','party_two')
+    list_filter = ('party_one',)
+    display = 'Contract'
+
 class ContactMail(models.Model):
     name = models.CharField(max_length=255, blank=True)
     inquiry = models.CharField(max_length=255, blank=True)

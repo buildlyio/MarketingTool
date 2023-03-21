@@ -8,6 +8,11 @@ import requests
 from django.urls import reverse
 from django.conf import settings
 import openai
+import base64
+
+from .smart_contract import sign_document
+
+from .models import Contract
 
 
 def contactView(request):
@@ -114,7 +119,7 @@ def display_contract(request, contract_id):
     address = settings.CONTRACT_ADDRESS
     # Create a contract instance
     contract_instance = w3.eth.contract(address=address, abi=abi)
-    # Encode the contract file as base64
+    # Encode the contract file as base64``
     with open(filename, 'rb') as f:
         contract_data = base64.b64encode(f.read()).decode('utf-8')
     # Sign the contract with the second party's private key
@@ -128,7 +133,7 @@ def display_contract(request, contract_id):
     # Render the template with the PDF contract and blockchain address
     return render(request, 'smartcontract.html', {'pdf_url': f"/media/{contract.pdf}", 'contract_id': contract_id, 'blockchain_address': blockchain_address})
 
-# views.py
+
 from django.shortcuts import render
 
 def chat_view(request):

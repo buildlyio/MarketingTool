@@ -187,5 +187,10 @@ SECRET_KEY = "sdfgerg32g90uadfgjo12!@89u9ergj924fsdf9889"
 
 INSIGHTS_API_URL = "https://rm-dev-api.buildly.io/"
 
-# settings.py
+
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+CONTRACT_ABI = os.getenv('CONTRACT_ABI')
+
+CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')
+
