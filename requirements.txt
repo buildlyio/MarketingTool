@@ -13,3 +13,4 @@ requests-oauthlib
 web3
 crypto
 openai
+django-cors-headers

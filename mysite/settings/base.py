@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'puput',
     'colorful',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
@@ -194,3 +198,6 @@ CONTRACT_ABI = os.getenv('CONTRACT_ABI')
 
 CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')
 
+CORS_ALLOWED_ORIGINS = [
+    '*',
+]
