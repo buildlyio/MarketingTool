@@ -50,3 +50,7 @@ DEBUG = False
 INSIGHTS_API_URL = "https://insights-api.buildly.io/"
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+CORS_ALLOWED_ORIGINS = [
+    'https://www.radicaltherapy.dev',
+]
