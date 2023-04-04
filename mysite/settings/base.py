@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'crispy_forms',
+    'crispy_bootstrap5',
     'storages',
 
     'django.contrib.admin',
@@ -201,3 +202,7 @@ CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')
 CORS_ALLOWED_ORIGINS = [
     '*',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

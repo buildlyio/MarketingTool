@@ -213,15 +213,31 @@ def chatbot(request):
             """
         prompt = context + request.POST.get('prompt', '')
         print(prompt)
-        response = openai.Completion.create(
-            prompt=prompt,
-            max_tokens=100,
-            n=1,
-            stop=None,
-            temperature=0,
-            model=COMPLETIONS_MODEL
-        )
-        print(response.choices[0].text)
+        try:
+            response = openai.Completion.create(
+                prompt=prompt,
+                max_tokens=100,
+                n=1,
+                stop=None,
+                temperature=0,
+                model=COMPLETIONS_MODEL
+            )
+            print(response.choices[0].text)
+        except openai.error.APIError as e:
+            #Handle API error here, e.g. retry or log
+            print(f"OpenAI API returned an API Error: {e}")
+            return JsonResponse({'response': "Sorry... The Buildly Support Bot is not feeling well, please try again later."})
+            
+        except openai.error.APIConnectionError as e:
+            #Handle connection error here
+            print(f"Failed to connect to OpenAI API: {e}")
+            return JsonResponse({'response': "Sorry... The Buildly Support Bot is not feeling well, please try again later."})
+            
+        except openai.error.RateLimitError as e:
+            #Handle rate limit error (we recommend using exponential backoff)
+            print(f"OpenAI API request exceeded rate limit: {e}")
+            return JsonResponse({'response': "Sorry... The Buildly Support Bot is not feeling well, please try again later."})
+            
         return JsonResponse({'response': response.choices[0].text})
     else:
         # If the request is not a POST request, or the message parameter is missing, just render the chat.html template

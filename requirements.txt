@@ -5,6 +5,7 @@ puput==1.1.4
 mysqlclient==2.1.0
 django-debug-toolbar
 django-crispy-forms
+crispy-bootstrap5
 django-colorful
 django-el-pagination
 django-storages
