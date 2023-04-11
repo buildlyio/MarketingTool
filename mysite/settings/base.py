@@ -199,9 +199,7 @@ CONTRACT_ABI = os.getenv('CONTRACT_ABI')
 
 CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')
 
-CORS_ALLOWED_ORIGINS = [
-    '*',
-]
+CORS_ALLOWED_ORIGINS = ['http://120.0.0.1','https://120.0.0.1', ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

@@ -32,6 +32,9 @@ class BlankPage(Page):
 class DevelopersPage(Page):
     pass
 
+class Bounty(Page):
+    pass
+
 class Faq(Page):
     pass
 
