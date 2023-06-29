@@ -62,8 +62,6 @@ def register(request):
         # Get your authenticated response
         resp = oauth.get("URL to the resource")
 
-        print(resp)
-
 
         organization = request.POST.get('organization')
         technical_founder = request.POST.get('technical_founder')
