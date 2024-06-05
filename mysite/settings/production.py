@@ -13,7 +13,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['coral-app-sbh2h.ondigitalocean.app', 'buildly.io', '127.0.0.1', '[::1]','www.buildly.io','https://www.radicaltherapy.dev']
+ALLOWED_HOSTS = ['dolphin-app-giq67.ondigitalocean.app/', 'buildly.io', '127.0.0.1', '[::1]','www.buildly.io','https://www.radicaltherapy.dev']
 
 try:
     from .local import *
