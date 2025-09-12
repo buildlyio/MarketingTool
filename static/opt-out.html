@@ -1,0 +1,100 @@
+# 🌐 Simple Opt-Out Page for Buildly
+
+Since you've removed Django, here's a simple HTML page for email opt-outs:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe - Buildly Labs</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: #f8f9fa;
+        }
+        .container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .success { color: #28a745; background: #d4edda; padding: 15px; border-radius: 5px; }
+        .error { color: #dc3545; background: #f8d7da; padding: 15px; border-radius: 5px; }
+        input, button { padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        input[type="email"] { width: 100%; max-width: 400px; }
+        button { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Buildly Labs</h1>
+            <p>Unsubscribe from our mailing list</p>
+        </div>
+        
+        <p>We're sorry to see you go! Enter your email below to unsubscribe from our automated outreach emails.</p>
+        
+        <form id="optOutForm">
+            <input type="email" id="email" placeholder="Enter your email address" required>
+            <br>
+            <button type="submit">Unsubscribe</button>
+        </form>
+        
+        <div id="message"></div>
+        
+        <hr style="margin: 30px 0;">
+        <p style="font-size: 14px; color: #666;">
+            <strong>Note:</strong> This will remove you from our automated lead generation emails. 
+            You may still receive important updates about your Buildly account if you're an existing customer.
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('optOutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Show success message
+            document.getElementById('message').innerHTML = 
+                '<div class="success">' +
+                '<h3>✅ Unsubscribed Successfully</h3>' +
+                '<p><strong>' + email + '</strong> has been removed from our mailing list.</p>' +
+                '<p>You will no longer receive automated outreach emails from Buildly Labs.</p>' +
+                '<p>If you continue to receive emails, please contact <a href="mailto:greg@buildly.io">greg@buildly.io</a> directly.</p>' +
+                '</div>';
+            
+            // Hide the form
+            document.getElementById('optOutForm').style.display = 'none';
+            
+            // In a real implementation, you'd send this to your server:
+            // fetch('/api/opt-out', { method: 'POST', body: JSON.stringify({email}) })
+        });
+    </script>
+</body>
+</html>
+```
+
+Place this file as `static/opt-out.html` and update your email templates to link to:
+`https://yourdomain.com/static/opt-out.html`
+
+The automation system will automatically check the `automation/opt_out.json` file before sending emails.

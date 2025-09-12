@@ -1,0 +1,27 @@
+[
+  {
+    "name": "AngelList",
+    "url": "https://angel.co/companies",
+    "type": "startup_directory"
+  },
+  {
+    "name": "Crunchbase",
+    "url": "https://www.crunchbase.com/lists/organizations/startups/4e8e6e2e-7e7e-4e8e-8e6e-7e7e4e8e6e7e",
+    "type": "startup_directory"
+  },
+  {
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com/",
+    "type": "startup_launch"
+  },
+  {
+    "name": "Y Combinator Startup Directory",
+    "url": "https://www.ycombinator.com/companies",
+    "type": "startup_directory"
+  },
+  {
+    "name": "Indie Hackers",
+    "url": "https://www.indiehackers.com/startups",
+    "type": "community"
+  }
+]

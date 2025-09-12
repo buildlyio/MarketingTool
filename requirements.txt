@@ -1,17 +1,20 @@
-Django==3.2
-wagtail==3.0.3
-django-social-share==2.2.1
-puput==1.1.4
-mysqlclient==2.1.0
-django-debug-toolbar
-django-crispy-forms
-crispy-bootstrap5
-django-colorful
-django-el-pagination
-django-storages
-boto3
-requests-oauthlib
-web3
-crypto
-openai
-django-cors-headers
+# Buildly Automation System Dependencies
+# Main automation system
+requests==2.31.0
+beautifulsoup4==4.12.2
+python-dotenv==1.0.0
+
+# Email and CRM
+smtplib  # Built-in Python module
+
+# Analytics APIs
+google-analytics-data==0.18.7
+google-api-python-client==2.108.0
+google-ads==24.1.0
+
+# HubSpot CRM integration
+hubspot-api-client==8.4.2
+
+# Optional: Keep these if you plan to use any web framework later
+# Django==3.2
+# wagtail==3.0.3

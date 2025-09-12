@@ -1,0 +1,12 @@
+requests==2.31.0
+beautifulsoup4==4.12.2
+python-dotenv==1.0.0
+google-analytics-data==0.18.7
+google-api-python-client==2.108.0
+google-ads==24.1.0
+hubspot-api-client==8.4.2ts==2.31.0
+beautifulsoup4==4.12.2
+python-dotenv==1.0.0
+google-analytics-data==0.18.7
+google-api-python-client==2.108.0
+hubspot-api-client==12.0.0

@@ -1,0 +1,29 @@
+[
+  {
+    "email": "startup1@example.com",
+    "source": "AngelList",
+    "source_url": "https://angel.co/companies/demo-startup",
+    "post_content": "Looking for a technical co-founder to help build our SaaS platform. We have traction but need development expertise.",
+    "keyword_matched": "technical co-founder",
+    "discovered_date": "2025-09-10T17:04:09.779451",
+    "status": "new"
+  },
+  {
+    "email": "pm@techstartup.com",
+    "source": "Indie Hackers",
+    "source_url": "https://www.indiehackers.com/post/demo",
+    "post_content": "Project manager here wanting to implement AI in our workflow but don't know how to code. Any recommendations?",
+    "keyword_matched": "project manager",
+    "discovered_date": "2025-09-10T17:04:09.779462",
+    "status": "new"
+  },
+  {
+    "email": "founder@aicompany.io",
+    "source": "Product Hunt",
+    "source_url": "https://producthunt.com/posts/demo-product",
+    "post_content": "Need help with software development for our AI startup. Looking for experienced developers.",
+    "keyword_matched": "software development",
+    "discovered_date": "2025-09-10T17:04:09.779463",
+    "status": "new"
+  }
+]
