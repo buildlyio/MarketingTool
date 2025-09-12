@@ -127,12 +127,12 @@ buildly-marketing/
 ```bash
 # MailerSend SMTP (Email Campaigns)
 SMTP_SERVER=smtp.mailersend.net
-SMTP_USER=MS_pHKgvv@buildly.io
-SMTP_PASSWORD=mssp.2FOC0bI.3yxj6ljjo10ldo2r.LrZUhkV
+SMTP_USER=your-mailersend-username
+SMTP_PASSWORD=your-mailersend-password
 
 # Reporting & Notifications
-REPORT_EMAIL=greg@buildly.io
-BCC_EMAIL=greg@buildly.io
+REPORT_EMAIL=your-email@domain.com
+BCC_EMAIL=your-email@domain.com
 
 # HubSpot CRM Integration
 HUBSPOT_ACCESS_TOKEN=your-hubspot-token
@@ -158,7 +158,7 @@ Each analytics platform is optional - the dashboard works with whatever you have
 2. **Email Campaigns**: Send personalized outreach to new leads
 3. **CRM Updates**: Sync all new leads to HubSpot
 4. **Analytics Collection**: Gather data from all connected platforms
-5. **Status Reporting**: Email daily summary to greg@buildly.io
+5. **Status Reporting**: Email daily summary to your configured email
 6. **Dashboard Refresh**: Update live dashboard with latest metrics
 
 ### Continuous Operations:
@@ -252,7 +252,7 @@ This dashboard provides complete visibility into all Buildly marketing activitie
 - Automatic CRM integration and lead management
 - Comprehensive analytics collection and reporting
 
-### 📧 **Daily Reports**: greg@buildly.io
+### 📧 **Daily Reports**: Your configured email address
 - Complete marketing performance summary
 - Lead generation and email campaign metrics
 - Website, social media, and advertising analytics
@@ -307,12 +307,12 @@ Edit `.env` with your credentials:
 ```bash
 # MailerSend SMTP (Required)
 SMTP_SERVER=smtp.mailersend.net
-SMTP_USER=MS_pHKgvv@buildly.io
+SMTP_USER=your-mailersend-username@domain.com
 SMTP_PASSWORD=mssp.2FOC0bI.3yxj6ljjo10ldo2r.LrZUhkV
 
 # Email Configuration
-REPORT_EMAIL=greg@buildly.io
-BCC_EMAIL=greg@buildly.io
+REPORT_EMAIL=your-email@domain.com
+BCC_EMAIL=your-email@domain.com
 
 # HubSpot CRM (Optional)
 HUBSPOT_ACCESS_TOKEN=your-token
@@ -374,9 +374,9 @@ buildly/website/
 
 ### Email System (MailerSend)
 - **SMTP Server**: `smtp.mailersend.net:587`
-- **Authentication**: MS_pHKgvv@buildly.io
-- **From Address**: MS_pHKgvv@buildly.io
-- **BCC**: greg@buildly.io (on all outreach emails)
+- **Authentication**: your-mailersend-username@domain.com
+- **From Address**: your-mailersend-username@domain.com
+- **BCC**: your-email@domain.com (on all outreach emails)
 - **Daily Limit**: 50 emails to prevent spam filtering
 
 ### Lead Sources
@@ -456,7 +456,7 @@ The system searches these platforms (and discovers new ones):
 
 ### Daily Operations:
 - **Automatic Execution**: Cron runs daily automation at 9 AM
-- **Status Reports**: Email summary sent to greg@buildly.io
+- **Status Reports**: Email summary sent to your configured address
 - **Error Handling**: Failed operations logged with details
 - **Rate Limiting**: Respects API quotas and email limits
 
@@ -557,6 +557,6 @@ The Buildly automation system is fully operational and ready for daily lead gene
 5. **Manage CRM**: Automatically add leads to HubSpot
 6. **Handle Opt-Outs**: Respect unsubscribe requests immediately
 
-**Check greg@buildly.io for test emails and daily reports!**
+**Check your configured email for test emails and daily reports!**
 
 For questions or support, contact the Buildly Labs team.
