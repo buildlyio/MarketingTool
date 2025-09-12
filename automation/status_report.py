@@ -65,154 +65,174 @@ class StatusReporter:
         self.bcc_email = os.getenv('BCC_EMAIL')
     
     def get_google_analytics_data(self):
-        """Fetch Google Analytics data using GA4 API"""
+        """Get Google Analytics data for both buildly.io properties using service account"""
+        print("📊 Fetching Google Analytics data...")
+        
+        service_account_file = os.getenv('GOOGLE_SERVICE_ACCOUNT_FILE')
+        main_property_id = os.getenv('GOOGLE_ANALYTICS_PROPERTY_ID')
+        labs_property_id = os.getenv('GOOGLE_ANALYTICS_LABS_PROPERTY_ID')
+        
+        if not service_account_file or not main_property_id:
+            print("⚠️  Google service account file or property ID not configured")
+            return self._get_demo_ga_data()
+        
         try:
-            analytics_data = {
-                'sessions': 0,
-                'page_views': 0,
-                'users': 0,
-                'bounce_rate': 0,
-                'avg_session_duration': 0,
-                'top_pages': [],
-                'traffic_sources': {},
-                'conversions': 0
-            }
+            # Import Google Analytics Data API client
+            from google.analytics.data_v1beta import BetaAnalyticsDataClient
+            from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest
+            from google.oauth2 import service_account
+            import json
             
-            if not self.ga_api_key or not self.ga_property_id:
-                logger.warning("Google Analytics credentials not provided")
-                analytics_data['status'] = "❌ API credentials not configured"
-                return analytics_data
+            # Load service account credentials
+            if not os.path.exists(service_account_file):
+                print(f"⚠️  Service account file not found: {service_account_file}")
+                return self._get_demo_ga_data()
             
-            if self.ga_property_id == "your-property-id":
-                logger.warning("Google Analytics Property ID not configured")
-                analytics_data['status'] = "⚠️ Property ID not configured"
-                return analytics_data
+            credentials = service_account.Credentials.from_service_account_file(
+                service_account_file,
+                scopes=['https://www.googleapis.com/auth/analytics.readonly']
+            )
             
-            # Try the Google Analytics Data API with API key (some endpoints support this)
-            url = f"https://analyticsdata.googleapis.com/v1beta/properties/{self.ga_property_id}:runReport"
+            # Initialize the client
+            client = BetaAnalyticsDataClient(credentials=credentials)
             
-            headers = {
-                'Content-Type': 'application/json',
-                'X-Goog-Api-Key': self.ga_api_key
-            }
+            # Get data for main property (buildly.io)
+            main_data = self._fetch_property_data(client, main_property_id, "buildly.io")
             
-            # Request data for the last 7 days
-            payload = {
-                "dateRanges": [{"startDate": "7daysAgo", "endDate": "today"}],
-                "metrics": [
-                    {"name": "sessions"},
-                    {"name": "screenPageViews"},
-                    {"name": "activeUsers"}
+            # For backward compatibility, return the main property data
+            # (keeping the same structure as before)
+            return main_data
+            
+        except ImportError:
+            print("⚠️  Google Analytics Data API client not installed")
+            print("   Run: pip install google-analytics-data")
+            return self._get_demo_ga_data()
+        except Exception as e:
+            print(f"❌ Google Analytics API error: {str(e)}")
+            print("   🔄 Using enhanced demo data instead")
+            return self._get_demo_ga_data()
+    
+    def _fetch_property_data(self, client, property_id, property_name):
+        """Fetch data for a specific GA4 property"""
+        try:
+            from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest
+            
+            # Create the request
+            request = RunReportRequest(
+                property=f"properties/{property_id}",
+                date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+                metrics=[
+                    Metric(name="sessions"),
+                    Metric(name="screenPageViews"),
+                    Metric(name="activeUsers"),
+                    Metric(name="bounceRate"),
+                    Metric(name="averageSessionDuration")
                 ],
-                "dimensions": [{"name": "pagePath"}]
-            }
+                dimensions=[
+                    Dimension(name="pagePath"),
+                    Dimension(name="sessionDefaultChannelGrouping")
+                ]
+            )
             
-            try:
-                response = requests.post(url, json=payload, headers=headers)
-                logger.info(f"GA4 API Response Status: {response.status_code}")
+            # Execute the request
+            response = client.run_report(request=request)
+            
+            # Process the response
+            total_sessions = 0
+            total_page_views = 0
+            total_users = 0
+            total_bounce_rate = 0
+            total_duration = 0
+            top_pages = []
+            traffic_sources = {}
+            
+            for row in response.rows:
+                sessions = int(row.metric_values[0].value) if len(row.metric_values) > 0 else 0
+                page_views = int(row.metric_values[1].value) if len(row.metric_values) > 1 else 0
+                users = int(row.metric_values[2].value) if len(row.metric_values) > 2 else 0
+                bounce_rate = float(row.metric_values[3].value) if len(row.metric_values) > 3 else 0
+                duration = float(row.metric_values[4].value) if len(row.metric_values) > 4 else 0
                 
-                if response.status_code == 200:
-                    data = response.json()
-                    logger.info("✅ Successfully retrieved live Google Analytics data!")
-                    
-                    # Process the response data
-                    total_sessions = 0
-                    total_page_views = 0 
-                    total_users = 0
-                    top_pages = []
-                    
-                    if 'rows' in data:
-                        for row in data['rows']:
-                            sessions = int(row['metricValues'][0]['value']) if len(row['metricValues']) > 0 else 0
-                            page_views = int(row['metricValues'][1]['value']) if len(row['metricValues']) > 1 else 0
-                            users = int(row['metricValues'][2]['value']) if len(row['metricValues']) > 2 else 0
-                            
-                            total_sessions += sessions
-                            total_page_views += page_views
-                            total_users += users
-                            
-                            page = row['dimensionValues'][0]['value'] if row['dimensionValues'] else 'Unknown'
-                            top_pages.append({'page': page, 'views': page_views})
-                    
-                    # Sort top pages by views
-                    top_pages = sorted(top_pages, key=lambda x: x['views'], reverse=True)[:5]
-                    
-                    analytics_data = {
-                        'sessions': total_sessions,
-                        'page_views': total_page_views,
-                        'users': total_users,
-                        'bounce_rate': 42.8,  # Not available in basic API response
-                        'avg_session_duration': 168,  # Not available in basic API response
-                        'top_pages': top_pages,
-                        'traffic_sources': {
-                            'organic': 48.5,
-                            'direct': 26.3,
-                            'referral': 14.2,
-                            'social': 11.0
-                        },
-                        'conversions': len(top_pages),  # Approximate based on page engagement
-                        'status': f"🚀 LIVE DATA from Property ID: {self.ga_property_id}"
-                    }
-                    
-                    return analytics_data
-                    
-                elif response.status_code == 401:
-                    logger.warning("GA4 API authentication failed - may require OAuth")
-                    # Fall back to enhanced demo data
-                    pass
-                elif response.status_code == 403:
-                    logger.warning("GA4 API access forbidden - check API permissions")
-                    # Fall back to enhanced demo data
-                    pass
+                total_sessions += sessions
+                total_page_views += page_views
+                total_users += users
+                total_bounce_rate += bounce_rate
+                total_duration += duration
+                
+                # Get page path and channel grouping
+                page = row.dimension_values[0].value if len(row.dimension_values) > 0 else 'Unknown'
+                channel = row.dimension_values[1].value if len(row.dimension_values) > 1 else 'Unknown'
+                
+                top_pages.append({'page': page, 'views': page_views})
+                
+                if channel in traffic_sources:
+                    traffic_sources[channel] += sessions
                 else:
-                    logger.error(f"GA4 API error: {response.status_code} - {response.text}")
-                    # Fall back to enhanced demo data
-                    pass
-                    
-            except requests.RequestException as e:
-                logger.error(f"Network error calling GA4 API: {e}")
-                # Fall back to enhanced demo data
-                pass
+                    traffic_sources[channel] = sessions
             
-            # Enhanced demo data with real property configuration
-            property_name = "buildly.io" if self.ga_property_id == "318805421" else "labs.buildly.io"
-            logger.info(f"Using enhanced demo data for {property_name} (Property ID: {self.ga_property_id})")
+            # Sort and limit top pages
+            top_pages = sorted(top_pages, key=lambda x: x['views'], reverse=True)[:5]
+            
+            # Calculate percentages for traffic sources
+            total_traffic = sum(traffic_sources.values())
+            if total_traffic > 0:
+                traffic_sources = {k: round((v / total_traffic) * 100, 1) for k, v in traffic_sources.items()}
             
             analytics_data = {
-                'sessions': 2840 if property_name == "buildly.io" else 1450,
-                'page_views': 8920 if property_name == "buildly.io" else 4200,
-                'users': 1560 if property_name == "buildly.io" else 890,
-                'bounce_rate': 42.8,
-                'avg_session_duration': 168,
-                'top_pages': [
-                    {'page': '/platform', 'views': 2340},
-                    {'page': '/pricing', 'views': 1890},
-                    {'page': '/about', 'views': 1450},
-                    {'page': '/blog/api-development', 'views': 890},
-                    {'page': '/contact', 'views': 650}
-                ] if property_name == "buildly.io" else [
-                    {'page': '/dashboard', 'views': 1200},
-                    {'page': '/apps', 'views': 890},
-                    {'page': '/docs', 'views': 650},
-                    {'page': '/login', 'views': 450},
-                    {'page': '/api', 'views': 320}
-                ],
-                'traffic_sources': {
-                    'organic': 48.5,
-                    'direct': 26.3,
-                    'referral': 14.2,
-                    'social': 11.0
-                },
-                'conversions': 28 if property_name == "buildly.io" else 15,
-                'status': f"📊 Enhanced demo data for {property_name} (Property ID: {self.ga_property_id})"
+                'sessions': total_sessions,
+                'page_views': total_page_views,
+                'users': total_users,
+                'bounce_rate': round(total_bounce_rate / len(response.rows), 1) if response.rows else 0,
+                'avg_session_duration': round(total_duration / len(response.rows), 0) if response.rows else 0,
+                'top_pages': top_pages,
+                'traffic_sources': traffic_sources,
+                'conversions': len([p for p in top_pages if 'contact' in p['page'].lower() or 'pricing' in p['page'].lower()]),
+                'status': f"🚀 LIVE DATA from {property_name} (Property ID: {property_id})"
             }
             
+            print(f"✅ Successfully retrieved live data for {property_name}")
             return analytics_data
             
         except Exception as e:
-            logger.error(f"Error fetching Google Analytics data: {e}")
-            return {'error': str(e), 'status': f"❌ Error: {str(e)}"}
+            print(f"❌ Error fetching data for {property_name}: {str(e)}")
+            return self._get_demo_ga_data_for_property(property_id, property_name)
     
+    def _get_demo_ga_data(self):
+        """Get demo data for the main property"""
+        main_property_id = os.getenv('GOOGLE_ANALYTICS_PROPERTY_ID', '318805421')
+        property_name = "buildly.io" if main_property_id == "318805421" else "labs.buildly.io"
+        return self._get_demo_ga_data_for_property(main_property_id, property_name)
+    
+    def _get_demo_ga_data_for_property(self, property_id, property_name):
+        """Get demo data for a specific property"""
+        return {
+            'sessions': 2840 if property_name == "buildly.io" else 1450,
+            'page_views': 8920 if property_name == "buildly.io" else 4200,
+            'users': 1560 if property_name == "buildly.io" else 890,
+            'bounce_rate': 42.8,
+            'avg_session_duration': 168,
+            'top_pages': [
+                {'page': '/platform', 'views': 2340},
+                {'page': '/pricing', 'views': 1890},
+                {'page': '/about', 'views': 1450},
+                {'page': '/blog/api-development', 'views': 890},
+                {'page': '/contact', 'views': 650}
+            ] if property_name == "buildly.io" else [
+                {'page': '/dashboard', 'views': 1200},
+                {'page': '/apps', 'views': 890},
+                {'page': '/docs', 'views': 650},
+                {'page': '/login', 'views': 450},
+                {'page': '/api', 'views': 320}
+            ],
+            'traffic_sources': {
+                'organic': 48.5,
+                'direct': 26.3,
+                'referral': 14.2,
+                'social': 11.0
+            },
+            'conversions': 28 if property_name == "buildly.io" else 15,
+            'status': f"📊 Enhanced demo data for {property_name} (Property ID: {property_id})"
+        }
     def get_youtube_analytics(self):
         """Fetch YouTube analytics data"""
         try:

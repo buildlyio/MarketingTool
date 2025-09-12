@@ -23,5 +23,20 @@
     "name": "Indie Hackers",
     "url": "https://www.indiehackers.com/startups",
     "type": "community"
+  },
+  {
+    "name": "Hacker News Who's Hiring",
+    "url": "https://news.ycombinator.com/item?id=whoishiring",
+    "type": "job_board"
+  },
+  {
+    "name": "Reddit Entrepreneur",
+    "url": "https://www.reddit.com/r/Entrepreneur/",
+    "type": "community"
+  },
+  {
+    "name": "Founder Groups",
+    "url": "https://foundergroups.com/",
+    "type": "community"
   }
 ]
