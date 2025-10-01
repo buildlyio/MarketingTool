@@ -66,8 +66,48 @@ def main():
         else:
             logger.info("No new leads to contact today")
         
-        # Step 3: Send status report
-        logger.info("Step 3: Sending status report...")
+        # Step 3: User engagement campaigns (runs on specific days)
+        logger.info("Step 3: Checking user engagement campaigns...")
+        try:
+            from user_engagement import UserEngagementSystem
+            engagement = UserEngagementSystem()
+            
+            # Check if it's time for user engagement (e.g., Tuesdays and Fridays)
+            current_day = datetime.now().weekday()  # 0=Monday, 1=Tuesday, etc.
+            
+            if current_day == 1:  # Tuesday - Feature announcements for active users
+                logger.info("Tuesday: Checking for pending feature announcements...")
+                # Note: Feature announcements should be triggered manually via CLI
+                # This is just a placeholder for future automated feature releases
+                
+            elif current_day == 4:  # Friday - Sync users and run re-engagement campaigns
+                logger.info("Friday: Syncing users from Buildly API...")
+                
+                # First, sync new users from Buildly API
+                try:
+                    sync_stats = engagement.sync_new_users_from_buildly(days_back=7)
+                    logger.info(f"User sync completed: {sync_stats['added_users']} new users, {sync_stats['existing_users']} already existed")
+                except Exception as e:
+                    logger.warning(f"API user sync failed: {e}")
+                
+                # Then run re-engagement campaigns
+                logger.info("Running re-engagement campaigns...")
+                inactive_users = engagement.get_inactive_users()
+                if len(inactive_users) > 0:
+                    # Limit to 20 re-engagement emails per week to avoid spam
+                    limited_users = inactive_users[:20]
+                    results = engagement.send_reengagement_campaign(limited_users)
+                    logger.info(f"Re-engagement sent: {results['sent']} emails, {results['skipped']} skipped")
+                else:
+                    logger.info("No inactive users found for re-engagement")
+            
+        except ImportError:
+            logger.warning("User engagement system not available")
+        except Exception as e:
+            logger.error(f"User engagement error: {e}")
+        
+        # Step 4: Send status report
+        logger.info("Step 4: Sending status report...")
         reporter = StatusReporter()
         report_sent = reporter.send_status_report()
         
