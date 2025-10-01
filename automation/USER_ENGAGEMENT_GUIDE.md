@@ -106,10 +106,11 @@ The system integrates with your existing `automation/main.py`:
 User engagement uses your existing MailerSend configuration from `.env`:
 
 ```bash
-# Email settings (already configured)
+```bash
+# Required environment variables (.env file)
 SMTP_SERVER=smtp.mailersend.net
-SMTP_USER=MS_Yh4iLk@buildly.io
-SMTP_PASSWORD=mssp.xdkL53K.3vz9dleke7qlkj50.YtSrOOd
+SMTP_USER=YOUR_MAILERSEND_USERNAME
+SMTP_PASSWORD=YOUR_MAILERSEND_PASSWORD
 BCC_EMAIL=greg@buildly.io
 
 # User engagement settings (optional)
